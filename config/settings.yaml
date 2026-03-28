@@ -1,0 +1,39 @@
+# ============================================================
+# settings.yaml — Configurazione Streak Monitor
+# ============================================================
+# Questo è l'UNICO file da modificare per personalizzare
+# il comportamento del sistema.
+# Le credenziali sensibili NON vanno qui: usare GitHub Secrets.
+# ============================================================
+
+# ── Google Drive
+drive:
+  # ID della cartella Drive con i CSV di MultiCharts.
+  # Visibile nell'URL: drive.google.com/drive/folders/QUESTO_ID
+  folder_id: "1BUOmf50Ty2-OL-nfarHWfVb0G7vD3X3E"
+
+# ── Email
+email:
+  subject: "📊 Streak Monitor — Report Notturno"
+
+# ── Soglie del motore di sizing
+# Modifica solo se vuoi rendere il sistema più o meno aggressivo.
+sizing:
+  thresholds:
+    # Soglia P(W|streak) per segnale 1.5x
+    p_increase_15x: 0.65
+
+    # Soglia P(W|streak) per segnale 2x (richiede anche n >= n_min_medium)
+    p_increase_2x: 0.75
+
+    # Soglia P(W|streak) per segnale difensivo 0.5x
+    p_decrease_05x: 0.35
+
+    # Numero minimo osservazioni per uscire da "Low" confidence (→ 1x forzato)
+    n_min_low: 5
+
+    # Numero minimo per "High" confidence (sblocca il 2x)
+    n_min_medium: 15
+
+    # Lunghezza massima della streak analizzata (non analizzare oltre N consecutive)
+    max_streak_look: 5
