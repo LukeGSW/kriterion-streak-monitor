@@ -35,6 +35,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15   # sicurezza: termina se impiegasse troppo
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'   # evita warning deprecazione Node.js 20
+
     permissions:
       contents: write      # necessario per committare state.json
 
