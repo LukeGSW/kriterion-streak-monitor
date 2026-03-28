@@ -279,17 +279,31 @@ def analyze_system(
     # ── Streak corrente
     streak_type, streak_len = _current_streak(win_seq)
 
-    # Cerca la streak più lunga utile (cap a max_look)
-    look_len = min(streak_len, thr["max_streak_look"])
+    # ── Cascade: parte dalla lunghezza reale della streak e scala verso
+    # il basso finché non trova abbastanza osservazioni storiche.
+    # Esempio: streak = 3L ma solo 3 osservazioni → prova 2L → se ha ≥5 obs usa quella.
+    # Così sistemi con 50 trade non vengono penalizzati per streak lunghe rare.
+    max_look     = min(streak_len, thr["max_streak_look"])
+    look_len     = 1
+    n_total      = 0
+    n_wins_after = 0
 
-    # ── Statistiche condizionali
-    n_total, n_wins_after = _conditional_stats(win_seq, streak_type, look_len, thr["max_streak_look"])
+    for try_len in range(max_look, 0, -1):
+        t, w = _conditional_stats(win_seq, streak_type, try_len, thr["max_streak_look"])
+        if t >= thr["n_min_low"] or try_len == 1:
+            look_len     = try_len
+            n_total      = t
+            n_wins_after = w
+            break
 
     # ── Stima Bayesiana
     p_win, ci_lo, ci_hi = _bayesian_estimate(n_total, n_wins_after)
 
-    # ── Moltiplicatore
-    streak_label = f"{streak_type}{look_len}"
+    # ── Moltiplicatore — nel label segnala se la streak è stata scalata
+    if look_len < streak_len:
+        streak_label = f"{streak_type}{look_len}(↓{streak_len})"
+    else:
+        streak_label = f"{streak_type}{look_len}"
     multiplier, confidence, reason = _determine_multiplier(p_win, n_total, streak_label, thr)
 
     # ── Ultimo trade
