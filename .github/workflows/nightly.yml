@@ -1,0 +1,103 @@
+# ============================================================
+# nightly.yml — GitHub Action: run notturna automatica
+# ============================================================
+# Esegue la pipeline di analisi ogni notte alle 01:00 UTC
+# (02:00 CET ora solare / 03:00 CEST ora legale).
+#
+# Può essere avviata manualmente da GitHub → Actions → Run workflow
+# per test o aggiornamenti urgenti.
+#
+# Secrets richiesti (Settings → Secrets and variables → Actions):
+#   GOOGLE_SERVICE_ACCOUNT_JSON  → JSON del service account Drive
+#   GMAIL_ADDRESS                → es. myaccount@gmail.com
+#   GMAIL_APP_PASSWORD           → App Password 16 caratteri
+# ============================================================
+
+name: Streak Monitor — Nightly Analysis
+
+on:
+  # Trigger automatico ogni notte alle 01:00 UTC
+  schedule:
+    - cron: '0 1 * * *'
+
+  # Trigger manuale da interfaccia GitHub (utile per test)
+  workflow_dispatch:
+    inputs:
+      debug_mode:
+        description: 'Abilita logging dettagliato'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  analyze-and-report:
+    name: Analisi Streak e Invio Report
+    runs-on: ubuntu-latest
+    timeout-minutes: 15   # sicurezza: termina se impiegasse troppo
+
+    permissions:
+      contents: write      # necessario per committare state.json
+
+    steps:
+
+      # ── 1. Checkout del repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      # ── 2. Configurazione Python
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      # ── 3. Installazione dipendenze
+      - name: Installa dipendenze
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # ── 4. Run pipeline principale
+      - name: Esegui analisi streak
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GMAIL_ADDRESS:               ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD:          ${{ secrets.GMAIL_APP_PASSWORD }}
+          PYTHONPATH:                  ${{ github.workspace }}/src
+          # Passa il debug flag se attivato manualmente
+          DEBUG_MODE: ${{ inputs.debug_mode || 'false' }}
+        run: |
+          echo "🕐 Avvio analisi: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          python src/main.py
+          echo "✅ Analisi completata: $(date -u '+%Y-%m-%d %H:%M UTC')"
+
+      # ── 5. Commit state.json aggiornato
+      - name: Commit state.json aggiornato
+        run: |
+          git config user.name  "streak-monitor[bot]"
+          git config user.email "streak-monitor[bot]@users.noreply.github.com"
+
+          git add state/system_state.json
+
+          # Committa solo se ci sono modifiche
+          if git diff --staged --quiet; then
+            echo "ℹ️  Nessuna modifica a state.json — commit saltato"
+          else
+            git commit -m "🔄 State update $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+            echo "✅ state.json aggiornato e committato"
+          fi
+
+      # ── 6. Notifica di fallimento (opzionale — invia annotazione in GitHub)
+      - name: Verifica esito
+        if: failure()
+        run: |
+          echo "::error::❌ La run notturna ha fallito. Controlla i log sopra."
+          echo "Cause comuni:"
+          echo "  - Credenziali Google Drive scadute o errate"
+          echo "  - App Password Gmail non valida"
+          echo "  - Formato CSV non riconosciuto"
