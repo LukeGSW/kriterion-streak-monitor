@@ -183,11 +183,17 @@ def fetch_all_systems(folder_id: str) -> dict[str, dict[str, Optional[str]]]:
         if open_csv_name in open_files:
             try:
                 raw_open = download_file_content(service, open_files[open_csv_name]['id'])
-                # Un file _Open vuoto ha solo 80-100 byte (header o riga vuota)
-                # Lo consideriamo vuoto se non ha dati reali
-                if len(raw_open.strip()) > 120:
+                # Considera il file valido se contiene almeno una riga dati
+                # con virgole (il formato _Open è una singola riga CSV ~93 byte)
+                data_lines = [
+                    l.strip() for l in raw_open.strip().splitlines()
+                    if l.strip() and ',' in l
+                ]
+                if data_lines:
                     open_content = raw_open
                     logger.info(f"  → Trade aperto rilevato in {open_csv_name}")
+                else:
+                    logger.debug(f"  → {open_csv_name} vuoto, nessuna posizione aperta")
             except Exception as e:
                 logger.warning(f"Errore download {open_csv_name}: {e}")
 
