@@ -18,7 +18,7 @@ import pandas as pd
 
 logger = logging.getLogger(__name__)
 
-# Indici colonne del formato CSV MultiCharts (zero-based, no header)
+# Indici colonne del formato CSV MultiCharts — trade CHIUSI (zero-based, no header)
 COL_TRADE_ID    = 0
 COL_STRATEGY    = 1
 COL_SYMBOL      = 2
@@ -35,6 +35,22 @@ COL_CAPITAL     = 12
 COL_PNL         = 13
 COL_PNL_PCT     = 14
 COL_BARS        = 15
+
+# Indici colonne del formato CSV MultiCharts — trade APERTI (_Open.csv)
+# Formato: SystemName, Ticker, AssetType, EntryDate, EntryTime, Direction,
+#          EntryPrice, CurrentPrice, Bars, Capital, OpenPnL, LastDate
+OPEN_COL_SYSTEM_NAME  = 0
+OPEN_COL_TICKER       = 1
+OPEN_COL_ASSET_TYPE   = 2
+OPEN_COL_ENTRY_DATE   = 3
+OPEN_COL_ENTRY_TIME   = 4
+OPEN_COL_DIRECTION    = 5
+OPEN_COL_ENTRY_PRICE  = 6
+OPEN_COL_CURRENT_PRICE = 7
+OPEN_COL_BARS         = 8
+OPEN_COL_CAPITAL      = 9
+OPEN_COL_OPEN_PNL     = 10
+OPEN_COL_LAST_DATE    = 11
 
 
 @dataclass
@@ -122,6 +138,77 @@ def _infer_family(system_name: str) -> str:
         if system_name.startswith(p):
             return p
     return system_name  # sistema sconosciuto → usa il nome intero come famiglia
+
+
+def parse_open_csv_content(content: str, system_name: str) -> Optional[TradeRecord]:
+    """
+    Parsa il contenuto di un file _Open.csv nel formato MultiCharts per posizioni aperte.
+
+    Formato atteso (singola riga, 12 campi, no header):
+      SystemName, Ticker, AssetType, EntryDate, EntryTime, Direction,
+      EntryPrice, CurrentPrice, Bars, Capital, OpenPnL, LastDate
+
+    Returns:
+        TradeRecord con is_open=True, oppure None se il file non è valido.
+    """
+    lines = [l.strip() for l in content.strip().splitlines() if l.strip() and ',' in l]
+    if not lines:
+        logger.debug(f"{system_name}_Open: nessuna riga dati trovata")
+        return None
+
+    # Prende solo la prima riga dati (una posizione aperta per sistema)
+    fields = lines[0].split(',')
+    if len(fields) < OPEN_COL_OPEN_PNL + 1:
+        logger.warning(
+            f"{system_name}_Open: riga troppo corta ({len(fields)} campi, attesi ≥11)"
+        )
+        return None
+
+    try:
+        entry_date = _parse_mc_date(fields[OPEN_COL_ENTRY_DATE])
+
+        open_pnl = None
+        if len(fields) > OPEN_COL_OPEN_PNL:
+            try:
+                open_pnl = float(fields[OPEN_COL_OPEN_PNL])
+            except ValueError:
+                pass
+
+        capital = 0.0
+        if len(fields) > OPEN_COL_CAPITAL:
+            try:
+                capital = float(fields[OPEN_COL_CAPITAL])
+            except ValueError:
+                pass
+
+        bars = None
+        if len(fields) > OPEN_COL_BARS:
+            try:
+                bars = int(fields[OPEN_COL_BARS])
+            except ValueError:
+                pass
+
+        return TradeRecord(
+            trade_id    = "OPEN",
+            strategy    = fields[OPEN_COL_SYSTEM_NAME].strip(),
+            symbol      = fields[OPEN_COL_TICKER].strip(),
+            asset_type  = fields[OPEN_COL_ASSET_TYPE].strip(),
+            entry_date  = entry_date,
+            exit_date   = None,
+            direction   = fields[OPEN_COL_DIRECTION].strip(),
+            entry_price = float(fields[OPEN_COL_ENTRY_PRICE]),
+            exit_price  = float(fields[OPEN_COL_CURRENT_PRICE]) if len(fields) > OPEN_COL_CURRENT_PRICE else None,
+            quantity    = 1,        # quantità non presente nel formato _Open
+            capital     = capital,
+            pnl         = open_pnl,
+            pnl_pct     = None,
+            bars        = bars,
+            is_open     = True,
+        )
+
+    except (ValueError, IndexError) as e:
+        logger.warning(f"{system_name}_Open: errore parsing ({e}), posizione aperta ignorata")
+        return None
 
 
 def parse_csv_content(content: str, system_name: str, is_open: bool = False) -> list[TradeRecord]:
@@ -218,9 +305,7 @@ def build_system_data(
 
     open_trade = None
     if open_content:
-        open_records = parse_csv_content(open_content, f"{system_name}_Open", is_open=True)
-        if open_records:
-            open_trade = open_records[0]
+        open_trade = parse_open_csv_content(open_content, system_name)
 
     # Metadata dal primo trade chiuso (tutti i trade di un sistema hanno stessi metadati)
     first = closed_trades[0]
