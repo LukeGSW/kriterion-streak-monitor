@@ -139,7 +139,7 @@ CONF_WIDTH = {
 }
 
 
-@st.cache_data(ttl=3600)   # aggiorna ogni ora (ma i dati cambiano solo di notte)
+@st.cache_data(ttl=300)    # cache 5 minuti — il bottone "Forza Aggiornamento" svuota la cache on-demand
 def load_state() -> Optional[dict]:
     """
     Scarica il file state.json dal repository GitHub.
@@ -328,6 +328,9 @@ def main() -> None:
         sel_open_only    = st.checkbox("Solo sistemi con posizione aperta", value=False)
 
         st.divider()
+        if st.button("🔄 Forza Aggiornamento"):
+            load_state.clear()
+            st.rerun()
         st.caption("Dati: MultiCharts via Google Drive\nAggiornamento: 02:00 CET ogni notte")
 
     # ── Applica filtri
