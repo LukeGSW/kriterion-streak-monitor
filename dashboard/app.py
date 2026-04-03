@@ -3,12 +3,13 @@
 # ============================================================
 # Dashboard di consultazione on-demand.
 # Legge state.json aggiornato ogni notte dalla GitHub Action.
-# Nessun calcolo real-time: fonte unica = state.json.
+# v2.0: storico giornaliero, EV, Half-Kelly, override indicator.
 #
 # Deploy: Streamlit Cloud → connetti il repo GitHub.
 # Secrets Streamlit (Settings → Secrets):
-#   GITHUB_STATE_URL = "https://raw.githubusercontent.com/TUO_USER/streak-monitor/main/state/system_state.json"
-#   GITHUB_TOKEN     = "ghp_..." (solo se repo privato)
+#   GITHUB_STATE_URL   = "https://raw.githubusercontent.com/.../main/state/system_state.json"
+#   GITHUB_HISTORY_URL = "https://api.github.com/repos/.../contents/state/history"
+#   GITHUB_TOKEN       = "ghp_..." (solo se repo privato)
 # ============================================================
 
 from __future__ import annotations
@@ -99,6 +100,16 @@ st.markdown("""
         font-weight: bold;
     }
 
+    /* Override badge */
+    .override-badge {
+        background: #555;
+        color: #ffd;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
     /* Titoli sezione */
     h2, h3 { color: #90caf9 !important; }
 
@@ -139,12 +150,9 @@ CONF_WIDTH = {
 }
 
 
-@st.cache_data(ttl=300)    # cache 5 minuti — il bottone "Forza Aggiornamento" svuota la cache on-demand
+@st.cache_data(ttl=300)
 def load_state() -> Optional[dict]:
-    """
-    Scarica il file state.json dal repository GitHub.
-    Usa il token se il repo è privato (configurabile nei secrets Streamlit).
-    """
+    """Scarica il file state.json dal repository GitHub."""
     url   = st.secrets.get("GITHUB_STATE_URL", "")
     token = st.secrets.get("GITHUB_TOKEN", "")
 
@@ -164,15 +172,60 @@ def load_state() -> Optional[dict]:
         resp = requests.get(url, headers=headers, timeout=15)
         resp.raise_for_status()
         return resp.json()
-    except requests.exceptions.HTTPError as e:
+    except requests.exceptions.HTTPError:
         if resp.status_code == 404:
             st.warning("⚠️ state.json non trovato. La prima run notturna non è ancora avvenuta.")
         else:
-            st.error(f"Errore HTTP: {e}")
+            st.error(f"Errore HTTP: {resp.status_code}")
         return None
     except Exception as e:
         st.error(f"Errore caricamento dati: {e}")
         return None
+
+
+@st.cache_data(ttl=300)
+def load_history() -> list[dict]:
+    """
+    Scarica la lista degli snapshot storici da state/history/ nel repo GitHub.
+    Ritorna una lista di dict con i dati giornalieri, ordinati per data.
+    """
+    url   = st.secrets.get("GITHUB_HISTORY_URL", "")
+    token = st.secrets.get("GITHUB_TOKEN", "")
+
+    if not url:
+        return []
+
+    headers = {"Accept": "application/vnd.github.v3+json"}
+    if token:
+        headers["Authorization"] = f"token {token}"
+
+    try:
+        resp = requests.get(url, headers=headers, timeout=15)
+        resp.raise_for_status()
+        files = resp.json()
+
+        # Prendi gli ultimi 30 giorni max
+        json_files = [f for f in files if f['name'].endswith('.json')]
+        json_files.sort(key=lambda f: f['name'], reverse=True)
+        json_files = json_files[:30]
+
+        history = []
+        for f in json_files:
+            try:
+                dl_url = f.get('download_url', '')
+                if not dl_url:
+                    continue
+                r = requests.get(dl_url, headers=headers, timeout=10)
+                r.raise_for_status()
+                history.append(r.json())
+            except Exception:
+                continue
+
+        history.sort(key=lambda h: h.get('date', ''))
+        return history
+
+    except Exception:
+        return []
 
 
 # ─────────────────────────────────────────────
@@ -196,6 +249,10 @@ def render_system_card(name: str, sys: dict) -> None:
     n_trades   = sys.get("n_trades", 0)
     win_rate   = sys.get("win_rate", 0)
     reason     = sys.get("sizing_reason", "")
+    # v2.0
+    ev_trade   = sys.get("ev_per_trade", 0.0)
+    hk         = sys.get("half_kelly", 0.0)
+    is_ovr     = sys.get("is_override", False)
 
     badge_class = MULT_BADGE_CLASS.get(mult, "badge-1x")
     badge_label = MULT_LABEL.get(mult, f"{mult}×")
@@ -204,10 +261,14 @@ def render_system_card(name: str, sys: dict) -> None:
     streak_str  = f"{streak_l}{streak_t}" if streak_t != "N/A" else "N/A"
 
     open_html    = '<span class="open-badge">● APERTA</span>' if has_open else ""
-    changed_html = f'<span class="changed-badge">⚡ CAMBIATO da {MULT_LABEL.get(prev_mult, prev_mult)}×</span>' if changed else ""
+    changed_html = f'<span class="changed-badge">⚡ da {MULT_LABEL.get(prev_mult, prev_mult)}×</span>' if changed else ""
+    override_html = '<span class="override-badge">⚙️ OVERRIDE</span>' if is_ovr else ""
 
     conf_color = CONF_COLORS.get(conf, "#888")
     conf_width = CONF_WIDTH.get(conf, "25%")
+
+    # EV color
+    ev_color = "#4caf50" if ev_trade > 0 else "#f44336" if ev_trade < 0 else "#888"
 
     st.markdown(f"""
     <div class="system-card">
@@ -215,7 +276,7 @@ def render_system_card(name: str, sys: dict) -> None:
         <div>
           <div style="color:#e0e0e0; font-weight:bold; font-size:15px; margin-bottom:4px;">
             {name}
-            &nbsp;{open_html}&nbsp;{changed_html}
+            &nbsp;{open_html}&nbsp;{changed_html}&nbsp;{override_html}
           </div>
           <div class="secondary-text">
             {sys.get('symbol','?')} &nbsp;·&nbsp; {sys.get('family','?')}
@@ -242,6 +303,13 @@ def render_system_card(name: str, sys: dict) -> None:
           </div>
         </div>
         <div>
+          <div class="secondary-text">EV | Half-Kelly</div>
+          <div style="color:{ev_color}; font-size:14px;">
+            {ev_trade:+.0f}$
+            <span class="secondary-text">HK {hk:.0%}</span>
+          </div>
+        </div>
+        <div>
           <div class="secondary-text">Confidenza (n={n_obs})</div>
           <div style="color:{conf_color}; font-size:13px;">{conf}</div>
           <div class="conf-bar-container">
@@ -259,6 +327,73 @@ def render_system_card(name: str, sys: dict) -> None:
       </div>
     </div>
     """, unsafe_allow_html=True)
+
+
+def render_history_chart(history: list[dict], systems: dict) -> None:
+    """
+    v2.0 — Renderizza il grafico di evoluzione moltiplicatori nel tempo.
+    Mostra i sistemi selezionati con i loro moltiplicatori giornalieri.
+    """
+    if not history:
+        st.info("📅 Storico non ancora disponibile. Sarà visibile dopo qualche giorno di run.")
+        return
+
+    import plotly.graph_objects as go
+
+    # Raccogli i nomi di sistemi disponibili nello storico
+    all_system_names = set()
+    for snap in history:
+        all_system_names.update(snap.get("systems", {}).keys())
+
+    # Seleziona i sistemi da visualizzare (default: quelli con segnali attivi)
+    active_systems = [name for name, s in systems.items() if s.get("multiplier", 1.0) != 1.0]
+    if not active_systems:
+        active_systems = list(systems.keys())[:5]
+
+    sel_systems = st.multiselect(
+        "Sistemi da visualizzare",
+        options=sorted(all_system_names),
+        default=sorted(active_systems)[:8],
+    )
+
+    if not sel_systems:
+        return
+
+    dates = [snap.get("date", "") for snap in history]
+
+    fig = go.Figure()
+    for sys_name in sel_systems:
+        mults = []
+        for snap in history:
+            sys_data = snap.get("systems", {}).get(sys_name, {})
+            mults.append(sys_data.get("multiplier", None))
+
+        fig.add_trace(go.Scatter(
+            x=dates, y=mults,
+            mode='lines+markers',
+            name=sys_name,
+            line=dict(width=2),
+            marker=dict(size=5),
+            connectgaps=True,
+        ))
+
+    fig.update_layout(
+        title="Evoluzione moltiplicatori",
+        paper_bgcolor='#0f0f1a',
+        plot_bgcolor='#1a1a2e',
+        font=dict(color='#e0e0e0'),
+        xaxis=dict(title="Data", showgrid=True, gridcolor='#2a2a4a'),
+        yaxis=dict(
+            title="Moltiplicatore",
+            showgrid=True, gridcolor='#2a2a4a',
+            dtick=0.5, range=[0, 2.5],
+        ),
+        legend=dict(bgcolor='rgba(0,0,0,0)'),
+        hovermode='x unified',
+        height=400,
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
 
 
 # ─────────────────────────────────────────────
@@ -330,6 +465,7 @@ def main() -> None:
         st.divider()
         if st.button("🔄 Forza Aggiornamento"):
             load_state.clear()
+            load_history.clear()
             st.rerun()
         st.caption("Dati: MultiCharts via Google Drive\nAggiornamento: 02:00 CET ogni notte")
 
@@ -361,33 +497,42 @@ def main() -> None:
 
     st.divider()
 
-    # ── Cards dei sistemi filtrati
-    if not filtered:
-        st.info("Nessun sistema corrisponde ai filtri selezionati.")
-        st.stop()
+    # ── Tab: Sistemi | Storico
+    tab_systems, tab_history = st.tabs(["📋 Sistemi", "📈 Storico"])
 
-    st.subheader(f"Sistemi ({n_filt} visualizzati su {n_total})")
+    with tab_systems:
+        if not filtered:
+            st.info("Nessun sistema corrisponde ai filtri selezionati.")
+        else:
+            st.subheader(f"Sistemi ({n_filt} visualizzati su {n_total})")
 
-    # Ordinamento: prima i segnali forti, poi per nome
-    def sort_key(item):
-        name, sys = item
-        mult_p = {2.0: 0, 0.5: 1, 1.5: 2, 1.0: 3}
-        conf_p = {"High": 0, "Medium": 1, "Low": 2}
-        return (
-            0 if sys.get('multiplier_changed') else 1,
-            mult_p.get(sys.get('multiplier', 1.0), 9),
-            conf_p.get(sys.get('confidence', 'Low'), 9),
-            name,
-        )
+            def sort_key(item):
+                name, sys = item
+                mult_p = {2.0: 0, 0.5: 1, 1.5: 2, 1.0: 3}
+                conf_p = {"High": 0, "Medium": 1, "Low": 2}
+                return (
+                    0 if sys.get('multiplier_changed') else 1,
+                    mult_p.get(sys.get('multiplier', 1.0), 9),
+                    conf_p.get(sys.get('confidence', 'Low'), 9),
+                    name,
+                )
 
-    sorted_systems = sorted(filtered.items(), key=sort_key)
+            sorted_systems = sorted(filtered.items(), key=sort_key)
 
-    # Layout a 2 colonne
-    col_a, col_b = st.columns(2)
+            col_a, col_b = st.columns(2)
+            for idx, (name, sys) in enumerate(sorted_systems):
+                with (col_a if idx % 2 == 0 else col_b):
+                    render_system_card(name, sys)
 
-    for idx, (name, sys) in enumerate(sorted_systems):
-        with (col_a if idx % 2 == 0 else col_b):
-            render_system_card(name, sys)
+    with tab_history:
+        st.subheader("Evoluzione Moltiplicatori")
+        st.markdown("""
+        Visualizza come i moltiplicatori di ciascun sistema sono cambiati
+        nelle ultime sessioni notturne. Utile per identificare trend nei segnali
+        e verificare la stabilità delle raccomandazioni.
+        """)
+        history = load_history()
+        render_history_chart(history, systems)
 
     # ── Expander metodologia
     st.divider()
@@ -403,6 +548,12 @@ def main() -> None:
         - Si contano tutti gli episodi storici analoghi (quante volte in passato ci sono state 3L)
         - Si applica Laplace smoothing: `P(W) = (n_wins + 1) / (n_total + 2)`
         - L'intervallo credibile [CI 80%] è il 10°–90° percentile della distribuzione Beta posteriore
+        - **v2.0:** le osservazioni recenti pesano di più (decay esponenziale con halflife configurabile)
+
+        **Expected Value condizionale (v2.0):**
+        - `EV = P(W|streak) × avg_win − (1−P(W|streak)) × |avg_loss|`
+        - L'EV normalizzato (EV/|avg_loss|) può spostare il moltiplicatore di ±1 livello
+        - **Half-Kelly:** `HK = 0.5 × (p×R − q) / R` dove R = avg_win/|avg_loss|
 
         **Livelli di confidenza:**
         - 🟢 **Alta**: ≥ 15 osservazioni storiche — range completo 0.5×, 1×, 1.5×, 2×
@@ -418,7 +569,8 @@ def main() -> None:
         | ≤ 35% | Media/Alta | **0.5×** |
 
         > Il sistema è intenzionalmente conservativo: preferisce restare a 1× piuttosto che
-        > segnalare falsi positivi su campioni piccoli.
+        > segnalare falsi positivi su campioni piccoli. L'EV aggiunge una conferma di edge
+        > economico reale oltre alla sola probabilità.
         """)
 
 
