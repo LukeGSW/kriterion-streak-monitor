@@ -4,10 +4,10 @@
 # Punto di ingresso del sistema. Coordina tutti i moduli:
 #   1. Download CSV da Google Drive
 #   2. Parsing di ogni sistema
-#   3. Analisi streak Bayesiana
+#   3. Analisi streak Bayesiana (con EV e decay)
 #   4. Costruzione email HTML
 #   5. Invio email
-#   6. Salvataggio state.json (per confronto notte successiva)
+#   6. Salvataggio state.json + storico giornaliero
 #
 # Eseguito automaticamente dalla GitHub Action ogni notte.
 # Può essere eseguito manualmente da terminale per test.
@@ -19,7 +19,7 @@ import json
 import logging
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -48,9 +48,10 @@ logger = logging.getLogger("main")
 # Percorsi fissi
 # ─────────────────────────────────────────────
 
-REPO_ROOT  = Path(__file__).parent.parent
-STATE_FILE = REPO_ROOT / "state" / "system_state.json"
-CONFIG_FILE = REPO_ROOT / "config" / "settings.yaml"
+REPO_ROOT    = Path(__file__).parent.parent
+STATE_FILE   = REPO_ROOT / "state" / "system_state.json"
+HISTORY_DIR  = REPO_ROOT / "state" / "history"
+CONFIG_FILE  = REPO_ROOT / "config" / "settings.yaml"
 
 
 # ─────────────────────────────────────────────
@@ -97,6 +98,12 @@ def save_state(analyses: list, run_date: datetime) -> None:
             "p_win_given_streak":   round(a.p_win_given_streak, 4),
             "ci_lower_80":          round(a.ci_lower_80, 4),
             "ci_upper_80":          round(a.ci_upper_80, 4),
+            # v2.0 — nuovi campi
+            "ev_per_trade":         round(a.ev_per_trade, 2),
+            "ev_normalized":        round(a.ev_normalized, 4),
+            "half_kelly":           round(a.half_kelly, 4),
+            "is_override":          a.is_override,
+            # campi esistenti
             "multiplier":           a.multiplier,
             "confidence":           a.confidence,
             "sizing_reason":        a.sizing_reason,
@@ -115,13 +122,47 @@ def save_state(analyses: list, run_date: datetime) -> None:
     logger.info(f"state.json salvato con {len(analyses)} sistemi")
 
 
+def save_history_snapshot(analyses: list, run_date: datetime) -> None:
+    """
+    Salva uno snapshot giornaliero in state/history/YYYY-MM-DD.json
+    per consentire analisi storiche nella dashboard.
+    Contiene solo i campi essenziali per ridurre lo spazio.
+    """
+    HISTORY_DIR.mkdir(parents=True, exist_ok=True)
+    date_str = run_date.strftime('%Y-%m-%d')
+    snapshot_file = HISTORY_DIR / f"{date_str}.json"
+
+    snapshot = {
+        "date": date_str,
+        "systems": {}
+    }
+
+    for a in analyses:
+        snapshot["systems"][a.system_name] = {
+            "symbol":       a.symbol,
+            "family":       a.family,
+            "multiplier":   a.multiplier,
+            "p_win":        round(a.p_win_given_streak, 4),
+            "ev_norm":      round(a.ev_normalized, 4),
+            "confidence":   a.confidence,
+            "streak":       f"{a.current_streak_len}{a.current_streak_type}",
+            "has_open":     a.has_open_position,
+            "is_override":  a.is_override,
+        }
+
+    with open(snapshot_file, 'w', encoding='utf-8') as f:
+        json.dump(snapshot, f, indent=2, ensure_ascii=False)
+
+    logger.info(f"Snapshot storico salvato: {snapshot_file.name}")
+
+
 # ─────────────────────────────────────────────
 # Run principale
 # ─────────────────────────────────────────────
 
 def run() -> None:
     """Esegue la pipeline completa di analisi notturna."""
-    run_date = datetime.utcnow()
+    run_date = datetime.now(timezone.utc)
     logger.info(f"{'='*60}")
     logger.info(f"Streak Monitor — Run {run_date.strftime('%Y-%m-%d %H:%M UTC')}")
     logger.info(f"{'='*60}")
@@ -130,6 +171,10 @@ def run() -> None:
     config     = load_config()
     folder_id  = config.get('drive', {}).get('folder_id', os.environ.get('DRIVE_FOLDER_ID'))
     thresholds = {**DEFAULT_THRESHOLDS, **config.get('sizing', {}).get('thresholds', {})}
+    overrides  = config.get('overrides', {})
+
+    if overrides:
+        logger.info(f"Override attivi: {list(overrides.keys())}")
 
     if not folder_id:
         logger.error("folder_id Drive non configurato. Imposta drive.folder_id in settings.yaml.")
@@ -173,15 +218,25 @@ def run() -> None:
             data       = system_data,
             thresholds = thresholds,
             prev_state = prev_state,
+            overrides  = overrides,
         )
+
+        # analyze_system ritorna None se il sistema è disabilitato via override
+        if analysis is None:
+            skipped += 1
+            continue
+
         analyses.append(analysis)
 
         # Log sintetico del risultato
         streak_str = f"{analysis.current_streak_len}{analysis.current_streak_type}"
+        ovr_flag   = " [OVERRIDE]" if analysis.is_override else ""
         logger.info(
             f"  → Streak: {streak_str} | P(W)={analysis.p_win_given_streak:.1%} | "
+            f"EV={analysis.ev_per_trade:+.1f}$ | "
             f"Mult: {analysis.multiplier}x | Conf: {analysis.confidence}"
             + (" [CAMBIATO]" if analysis.multiplier_changed else "")
+            + ovr_flag
         )
 
     logger.info(f"\nAnalisi completata: {len(analyses)} sistemi | {skipped} saltati")
@@ -193,8 +248,10 @@ def run() -> None:
     # ── 5. Costruisci email HTML
     html_body = build_html_email(analyses, run_date)
 
-    # ── 6. Salva state.json (prima dell'email: se email fallisce lo stato è comunque salvato)
+    # ── 6. Salva state.json + snapshot storico
+    #    (prima dell'email: se email fallisce lo stato è comunque salvato)
     save_state(analyses, run_date)
+    save_history_snapshot(analyses, run_date)
 
     # ── 7. Invia email
     logger.info("Invio email notturna...")
@@ -204,13 +261,12 @@ def run() -> None:
         logger.info("✅ Report inviato con successo")
     else:
         logger.error("❌ Invio email fallito — controlla le credenziali Gmail")
-        # Non uscire con errore: state.json è già stato salvato
-        # L'Action segnalerà il warning ma non fallirà il commit
 
     # ── 8. Riepilogo finale
     changed    = [a for a in analyses if a.multiplier_changed]
     non_unit   = [a for a in analyses if a.multiplier != 1.0]
     open_pos   = [a for a in analyses if a.has_open_position]
+    overridden = [a for a in analyses if a.is_override]
 
     logger.info(f"\n{'='*40}")
     logger.info(f"RIEPILOGO FINALE")
@@ -218,6 +274,7 @@ def run() -> None:
     logger.info(f"  Segnali attivi:      {len(non_unit)}")
     logger.info(f"  Cambio vs ieri:      {len(changed)}")
     logger.info(f"  Posizioni aperte:    {len(open_pos)}")
+    logger.info(f"  Override manuali:    {len(overridden)}")
     if non_unit:
         logger.info(f"\n  Sistemi con segnale:")
         for a in sorted(non_unit, key=lambda x: x.multiplier, reverse=True):
