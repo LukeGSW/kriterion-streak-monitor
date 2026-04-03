@@ -14,8 +14,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-import pandas as pd
-
 logger = logging.getLogger(__name__)
 
 # Indici colonne del formato CSV MultiCharts — trade CHIUSI (zero-based, no header)
@@ -104,7 +102,8 @@ class SystemData:
 
     def to_win_series(self) -> list[int]:
         """Restituisce la sequenza binaria W=1 / L=0 dei trade chiusi."""
-        return [1 if t.pnl > 0 else 0 for t in self.closed_trades if t.pnl is not None]
+        # PnL == 0 (breakeven) viene escluso dalla serie W/L
+        return [1 if t.pnl > 0 else 0 for t in self.closed_trades if t.pnl is not None and t.pnl != 0.0]
 
 
 # ─────────────────────────────────────────────
