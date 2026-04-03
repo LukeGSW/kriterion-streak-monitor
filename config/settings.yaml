@@ -37,3 +37,41 @@ sizing:
 
     # Lunghezza massima della streak analizzata (non analizzare oltre N consecutive)
     max_streak_look: 5
+
+    # ── v2.0: Decay temporale e Expected Value ──
+
+    # Halflife del decay esponenziale (in numero di trade).
+    # Le osservazioni più vecchie di ~decay_halflife trade pesano la metà.
+    # 0 = disabilitato (comportamento v1 originale).
+    # Valori consigliati: 30-80 per sistemi con 100+ trade.
+    decay_halflife: 50
+
+    # Soglia EV normalizzato (EV/|avg_loss|) per boost moltiplicatore di +1 livello.
+    # Es: se EV/|avg_loss| >= 0.15, il moltiplicatore sale di 1 livello (1x→1.5x, 1.5x→2x).
+    ev_boost: 0.15
+
+    # Soglia EV normalizzato per penalità moltiplicatore di -1 livello.
+    # Es: se EV/|avg_loss| <= -0.10, il moltiplicatore scende di 1 livello.
+    ev_penalize: -0.10
+
+
+# ── Override manuali per sistema
+# Permette di forzare il moltiplicatore o disabilitare un sistema
+# senza toccare il codice. Utile durante eventi macro, rollover, manutenzione.
+#
+# Formato:
+#   NomeSistema:
+#     multiplier: 0.5       # forza il moltiplicatore (0.5 / 1.0 / 1.5 / 2.0)
+#     reason: "FOMC week"   # motivo leggibile nel report
+#
+# Per disabilitare un sistema completamente (non comparirà nel report):
+#   NomeSistema:
+#     enabled: false
+#
+# Esempi (decommentare per attivare):
+overrides: {}
+  # BiasIntraweekAAPL:
+  #   multiplier: 0.5
+  #   reason: "FOMC week — riduzione esposizione macro"
+  # ZScoreNVDA:
+  #   enabled: false
