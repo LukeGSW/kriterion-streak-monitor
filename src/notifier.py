@@ -15,9 +15,10 @@ from __future__ import annotations
 import logging
 import os
 import smtplib
-from datetime import datetime
+from datetime import datetime, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +48,7 @@ def send_report(html_body: str, subject: Optional[str] = None) -> bool:
         return False
 
     if subject is None:
-        date_str = datetime.utcnow().strftime('%d/%m/%Y')
+        date_str = datetime.now(timezone.utc).strftime('%d/%m/%Y')
         subject  = f"📊 Streak Monitor — Report {date_str}"
 
     # Costruisci il messaggio MIME multipart
@@ -88,7 +89,3 @@ def send_report(html_body: str, subject: Optional[str] = None) -> bool:
     except Exception as e:
         logger.error(f"Errore inatteso durante l'invio email: {e}")
         return False
-
-
-# Typing import mancante (compatibilità Python 3.9)
-from typing import Optional
