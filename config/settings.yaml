@@ -47,12 +47,27 @@ sizing:
     decay_halflife: 50
 
     # Soglia EV normalizzato (EV/|avg_loss|) per boost moltiplicatore di +1 livello.
-    # Es: se EV/|avg_loss| >= 0.15, il moltiplicatore sale di 1 livello (1x→1.5x, 1.5x→2x).
-    ev_boost: 0.15
+    # Es: se EV/|avg_loss| >= 0.30, il moltiplicatore sale di 1 livello (1x→1.5x, 1.5x→2x).
+    # Alzato da 0.15 a 0.30 per evitare boost troppo frequenti.
+    ev_boost: 0.30
 
     # Soglia EV normalizzato per penalità moltiplicatore di -1 livello.
     # Es: se EV/|avg_loss| <= -0.10, il moltiplicatore scende di 1 livello.
     ev_penalize: -0.10
+
+    # ── v2.1: Guardrail anti-aggressività per EV boost ──
+    # Il boost EV richiede TRE condizioni simultanee:
+    #   1. EV_norm >= ev_boost (edge significativo)
+    #   2. P(W) >= ev_boost_pw_floor (probabilità conferma il segnale)
+    #   3. Half-Kelly >= ev_boost_hk_floor (edge reale secondo Kelly)
+
+    # P(W|streak) minima per attivare il boost EV.
+    # Impedisce boost a sistemi con P(W) < 50% anche se hanno EV positivo per skew.
+    ev_boost_pw_floor: 0.50
+
+    # Half-Kelly minimo per attivare il boost EV.
+    # Richiede che Kelly confermi l'esistenza di un edge reale.
+    ev_boost_hk_floor: 0.02
 
 
 # ── Override manuali per sistema
