@@ -252,8 +252,9 @@ class TestDetermineMultiplier:
         assert mult == 1.0
 
     def test_ev_boost_bumps_up(self):
+        # Tutte e 3 le condizioni soddisfatte: EV >= 0.30, P(W) >= 0.50, HK >= 0.02
         mult, _, reason = _determine_multiplier(
-            0.50, 20, "W", DEFAULT_THRESHOLDS, ev_normalized=0.30
+            0.55, 20, "W", DEFAULT_THRESHOLDS, ev_normalized=0.35, half_kelly=0.05
         )
         assert mult == 1.5
         assert "EV boost" in reason
@@ -266,18 +267,79 @@ class TestDetermineMultiplier:
         assert "EV penalità" in reason  # nota: accent grave in "penalità"
 
     def test_ev_boost_respects_medium_cap(self):
+        # Medium conf con P(W)=0.70 → base 1.5x, non può andare a 2x
         mult, conf, _ = _determine_multiplier(
-            0.70, 10, "W", DEFAULT_THRESHOLDS, ev_normalized=0.30
+            0.70, 10, "W", DEFAULT_THRESHOLDS, ev_normalized=0.40, half_kelly=0.10
         )
         assert mult == 1.5
         assert conf == "Medium"
 
     def test_ev_no_effect_on_low(self):
         mult, conf, _ = _determine_multiplier(
-            0.50, 3, "W", DEFAULT_THRESHOLDS, ev_normalized=0.50
+            0.50, 3, "W", DEFAULT_THRESHOLDS, ev_normalized=0.50, half_kelly=0.10
         )
         assert mult == 1.0
         assert conf == "Low"
+
+    # ── v2.1: guardrail tests ──
+
+    def test_ev_boost_blocked_by_low_pw(self):
+        """EV alto ma P(W)=0.40 < 0.50 → nessun boost (guardrail P(W) floor)."""
+        mult, _, reason = _determine_multiplier(
+            0.40, 20, "W", DEFAULT_THRESHOLDS, ev_normalized=0.50, half_kelly=0.10
+        )
+        assert mult == 1.0
+        assert "EV boost" not in reason
+
+    def test_ev_boost_blocked_by_low_hk(self):
+        """EV alto e P(W)=0.55 ma Half-Kelly=0.01 < 0.02 → nessun boost."""
+        mult, _, reason = _determine_multiplier(
+            0.55, 20, "W", DEFAULT_THRESHOLDS, ev_normalized=0.35, half_kelly=0.01
+        )
+        assert mult == 1.0
+        assert "EV boost" not in reason
+
+    def test_ev_boost_blocked_by_low_ev(self):
+        """P(W)=0.55 e HK=0.05 ma EV=0.20 < 0.30 → nessun boost (soglia EV alzata)."""
+        mult, _, reason = _determine_multiplier(
+            0.55, 20, "W", DEFAULT_THRESHOLDS, ev_normalized=0.20, half_kelly=0.05
+        )
+        assert mult == 1.0
+        assert "EV boost" not in reason
+
+    def test_ev_boost_requires_all_three_conditions(self):
+        """Solo con tutte e 3 le condizioni soddisfatte si ottiene il boost."""
+        # Caso 1: tutte OK → boost
+        mult, _, _ = _determine_multiplier(
+            0.55, 20, "W", DEFAULT_THRESHOLDS, ev_normalized=0.35, half_kelly=0.05
+        )
+        assert mult == 1.5
+
+        # Caso 2: P(W) fails → no boost
+        mult, _, _ = _determine_multiplier(
+            0.45, 20, "W", DEFAULT_THRESHOLDS, ev_normalized=0.35, half_kelly=0.05
+        )
+        assert mult == 1.0
+
+        # Caso 3: HK fails → no boost
+        mult, _, _ = _determine_multiplier(
+            0.55, 20, "W", DEFAULT_THRESHOLDS, ev_normalized=0.35, half_kelly=0.005
+        )
+        assert mult == 1.0
+
+        # Caso 4: EV fails → no boost
+        mult, _, _ = _determine_multiplier(
+            0.55, 20, "W", DEFAULT_THRESHOLDS, ev_normalized=0.25, half_kelly=0.05
+        )
+        assert mult == 1.0
+
+    def test_ev_penalize_no_guardrail_needed(self):
+        """La penalità EV è conservativa, non richiede guardrail extra."""
+        mult, _, reason = _determine_multiplier(
+            0.50, 20, "W", DEFAULT_THRESHOLDS, ev_normalized=-0.15, half_kelly=0.0
+        )
+        assert mult == 0.5
+        assert "EV penalità" in reason
 
 
 # ─────────────────────────────────────────────
