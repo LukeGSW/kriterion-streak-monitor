@@ -49,8 +49,11 @@ DEFAULT_THRESHOLDS = {
     "max_streak_look": 5,      # max lunghezza streak analizzata
     # v2.0 — nuove soglie
     "decay_halflife":  50,     # halflife del decay esponenziale (in numero di trade)
-    "ev_boost":        0.15,   # EV normalizzato ≥ soglia → boost moltiplicatore di 1 livello
+    "ev_boost":        0.30,   # EV normalizzato ≥ soglia → boost di 1 livello (alzato da 0.15)
     "ev_penalize":    -0.10,   # EV normalizzato ≤ soglia → penalizza di 1 livello
+    # v2.1 — guardrail anti-aggressività
+    "ev_boost_pw_floor": 0.50, # P(W) minima per abilitare EV boost (no boost sotto il 50%)
+    "ev_boost_hk_floor": 0.02, # Half-Kelly minimo per abilitare EV boost (edge reale richiesto)
 }
 
 
@@ -255,13 +258,16 @@ def _determine_multiplier(
     streak_type: str,
     thresholds: dict,
     ev_normalized: float = 0.0,
+    half_kelly: float = 0.0,
 ) -> tuple[float, str, str]:
     """
     Assegna il moltiplicatore di sizing basato su P(W|streak) + EV condizionale.
 
     Logica primaria (invariata): soglie P(W|streak) per livello di confidenza.
-    Logica secondaria (v2.0): l'EV normalizzato può fare bump up/down di 1 livello
-    solo se la confidenza è Medium o High (mai su Low).
+    Logica secondaria (v2.0+): l'EV normalizzato può fare bump up/down di 1 livello
+    solo se la confidenza è Medium o High (mai su Low) E sono soddisfatti i guardrail:
+      - P(W) >= ev_boost_pw_floor (default 0.50): non si boosta sotto il 50%
+      - Half-Kelly >= ev_boost_hk_floor (default 0.02): serve edge reale
 
     Args:
         p_win:         P(W|streak) stimata (Laplace posterior mean)
@@ -269,6 +275,7 @@ def _determine_multiplier(
         streak_type:   "W" o "L" — usato per il messaggio
         thresholds:    dizionario soglie da settings.yaml
         ev_normalized: EV / |avg_loss| — usato per boost/penalità
+        half_kelly:    Half-Kelly fraction — usato come guardrail per il boost
 
     Returns:
         (multiplier, confidence, reason)
@@ -278,8 +285,10 @@ def _determine_multiplier(
     p_up15   = thresholds["p_increase_15x"]
     p_up2    = thresholds["p_increase_2x"]
     p_dn     = thresholds["p_decrease_05x"]
-    ev_boost_thr    = thresholds.get("ev_boost", 0.15)
+    ev_boost_thr    = thresholds.get("ev_boost", 0.30)
     ev_penalize_thr = thresholds.get("ev_penalize", -0.10)
+    pw_floor        = thresholds.get("ev_boost_pw_floor", 0.50)
+    hk_floor        = thresholds.get("ev_boost_hk_floor", 0.02)
 
     # n_obs è float con decay: confronta con soglie arrotondando
     n_obs_int = round(n_obs)
@@ -305,16 +314,25 @@ def _determine_multiplier(
         base_mult = 1.0
         reason = f"P(W|{streak_type}) = {p_win:.1%} — nessun segnale significativo"
 
-    # ── Logica secondaria v2.0: EV boost/penalize
-    # L'EV può spostare il moltiplicatore di 1 livello, mai oltre i limiti del tier
+    # ── Logica secondaria v2.0+: EV boost/penalize con guardrail
+    # Il boost richiede TRE condizioni simultanee:
+    #   1. EV_norm >= ev_boost_thr (edge significativo su base rischio)
+    #   2. P(W) >= pw_floor (la probabilità stessa deve confermare il segnale)
+    #   3. Half-Kelly >= hk_floor (edge reale secondo Kelly — non solo EV alto per skew)
+    # La penalità richiede solo EV_norm <= ev_penalize_thr (è conservativa, giusto così).
     MULT_LEVELS = [0.5, 1.0, 1.5, 2.0]
     final_mult = base_mult
 
     if confidence != "Low" and ev_normalized != 0.0:
         idx = MULT_LEVELS.index(base_mult) if base_mult in MULT_LEVELS else 1
 
-        if ev_normalized >= ev_boost_thr and idx < len(MULT_LEVELS) - 1:
-            # Boost: un livello in su (rispettando il cap per Medium)
+        # Boost: tutte e tre le condizioni devono essere soddisfatte
+        ev_qualifies  = ev_normalized >= ev_boost_thr
+        pw_qualifies  = p_win >= pw_floor
+        hk_qualifies  = half_kelly >= hk_floor
+        can_boost     = ev_qualifies and pw_qualifies and hk_qualifies
+
+        if can_boost and idx < len(MULT_LEVELS) - 1:
             candidate = MULT_LEVELS[idx + 1]
             if confidence == "Medium" and candidate > 1.5:
                 candidate = 1.5  # cap Medium a 1.5x
@@ -323,7 +341,7 @@ def _determine_multiplier(
                 reason += f" | EV boost ({ev_normalized:+.2f} ≥ {ev_boost_thr:+.2f})"
 
         elif ev_normalized <= ev_penalize_thr and idx > 0:
-            # Penalize: un livello in giù
+            # Penalize: un livello in giù (nessun guardrail extra — è conservativa)
             final_mult = MULT_LEVELS[idx - 1]
             reason += f" | EV penalità ({ev_normalized:+.2f} ≤ {ev_penalize_thr:+.2f})"
 
@@ -414,7 +432,7 @@ def analyze_system(
         streak_label = f"{streak_type}{look_len}"
 
     multiplier, confidence, reason = _determine_multiplier(
-        p_win, n_total, streak_label, thr, ev_norm
+        p_win, n_total, streak_label, thr, ev_norm, hk
     )
 
     # ── Override manuale: sovrascrive il moltiplicatore calcolato
