@@ -26,7 +26,7 @@
     "BRKAzioni-W": {
       "symbol": "W",
       "family": "BRKAzioni-W",
-      "multiplier": 1.0,
+      "multiplier": 0.5,
       "p_win": 0.3028,
       "ev_norm": 0.6835,
       "confidence": "Medium",
@@ -37,7 +37,7 @@
     "BRKPrezziAlt-1000BONKUSDT": {
       "symbol": "1000BONKUSDT",
       "family": "BRKPrezziAlt-1000BONKUSDT",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.441,
       "ev_norm": 0.2324,
       "confidence": "High",
@@ -59,7 +59,7 @@
     "BRKPrezziAlt-1000SHIBUSDT": {
       "symbol": "1000SHIBUSDT",
       "family": "BRKPrezziAlt-1000SHIBUSDT",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4596,
       "ev_norm": 0.595,
       "confidence": "Medium",
@@ -70,7 +70,7 @@
     "BRKPrezziAlt-FILUSDT": {
       "symbol": "FILUSDT",
       "family": "BRKPrezziAlt-FILUSDT",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4059,
       "ev_norm": 0.2017,
       "confidence": "High",
@@ -103,7 +103,7 @@
     "BRKPrezziMGC": {
       "symbol": "@MGCJ26",
       "family": "BRKPrezziMGC",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4906,
       "ev_norm": 0.4666,
       "confidence": "High",
@@ -114,7 +114,7 @@
     "BRKPrezziNG": {
       "symbol": "@NGK26",
       "family": "BRKPrezziNG",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4766,
       "ev_norm": 2.218,
       "confidence": "Medium",
@@ -136,7 +136,7 @@
     "BiasIntraweekAVGO": {
       "symbol": "AVGO",
       "family": "BiasIntraweek",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4398,
       "ev_norm": 0.263,
       "confidence": "Medium",
@@ -147,7 +147,7 @@
     "BiasIntraweekBA": {
       "symbol": "BA",
       "family": "BiasIntraweek",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4324,
       "ev_norm": 0.9041,
       "confidence": "High",
@@ -158,7 +158,7 @@
     "BiasIntraweekCAT": {
       "symbol": "CAT",
       "family": "BiasIntraweek",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4174,
       "ev_norm": 0.7081,
       "confidence": "Medium",
@@ -169,7 +169,7 @@
     "BiasIntraweekGS": {
       "symbol": "GS",
       "family": "BiasIntraweek",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4906,
       "ev_norm": 1.1586,
       "confidence": "Medium",
@@ -191,7 +191,7 @@
     "BiasIntraweekMCD": {
       "symbol": "MCD",
       "family": "BiasIntraweek",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4603,
       "ev_norm": 0.3604,
       "confidence": "High",
@@ -213,7 +213,7 @@
     "BiasIntraweekORCL": {
       "symbol": "ORCL",
       "family": "BiasIntraweek",
-      "multiplier": 1.0,
+      "multiplier": 0.5,
       "p_win": 0.3499,
       "ev_norm": 0.2962,
       "confidence": "High",
@@ -235,7 +235,7 @@
     "BreakOutAMD": {
       "symbol": "AMD",
       "family": "BreakOut",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4172,
       "ev_norm": 0.562,
       "confidence": "Medium",
@@ -246,7 +246,7 @@
     "BreakOutBIDU": {
       "symbol": "BIDU",
       "family": "BreakOut",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.3659,
       "ev_norm": 0.3118,
       "confidence": "Medium",
@@ -279,7 +279,7 @@
     "BreakOutRCL": {
       "symbol": "RCL",
       "family": "BreakOut",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4243,
       "ev_norm": 0.5259,
       "confidence": "Medium",
@@ -290,7 +290,7 @@
     "BreakOutSHOP": {
       "symbol": "SHOP",
       "family": "BreakOut",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.493,
       "ev_norm": 0.732,
       "confidence": "Medium",
@@ -301,7 +301,7 @@
     "BreakOutWYNN": {
       "symbol": "WYNN",
       "family": "BreakOut",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.3823,
       "ev_norm": 0.3518,
       "confidence": "Medium",
@@ -334,7 +334,7 @@
     "ISSCrypto-1000PEPEUSDT": {
       "symbol": "1000PEPEUSDT",
       "family": "ISSCrypto-1000PEPEUSDT",
-      "multiplier": 1.0,
+      "multiplier": 0.5,
       "p_win": 0.3139,
       "ev_norm": 0.373,
       "confidence": "High",
@@ -356,7 +356,7 @@
     "ISSCrypto-DOGEUSDT": {
       "symbol": "DOGEUSDT",
       "family": "ISSCrypto-DOGEUSDT",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.3757,
       "ev_norm": 0.9131,
       "confidence": "High",
@@ -411,7 +411,7 @@
     "ShortCoverMNQ": {
       "symbol": "@MNQM26",
       "family": "ShortCover",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.4088,
       "ev_norm": 0.2462,
       "confidence": "High",
@@ -422,7 +422,7 @@
     "ZScoreAMD": {
       "symbol": "AMD",
       "family": "ZScore",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.5242,
       "ev_norm": 0.2236,
       "confidence": "High",
@@ -433,7 +433,7 @@
     "ZScoreAMZN": {
       "symbol": "AMZN",
       "family": "ZScore",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.5815,
       "ev_norm": 0.1644,
       "confidence": "High",
@@ -510,7 +510,7 @@
     "ZScoreNFLX": {
       "symbol": "NFLX",
       "family": "ZScore",
-      "multiplier": 1.5,
+      "multiplier": 1.0,
       "p_win": 0.3816,
       "ev_norm": 0.15,
       "confidence": "Medium",
