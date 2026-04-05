@@ -1,48 +1,15 @@
 {
   "date": "2026-04-05",
   "systems": {
-    "BRKAzioni-AAPL": {
-      "symbol": "AAPL",
-      "family": "BRKAzioni-AAPL",
-      "multiplier": 1.5,
-      "p_win": 0.5504,
-      "ev_norm": 1.2347,
-      "confidence": "Medium",
-      "streak": "2L",
-      "has_open": false,
-      "is_override": false
-    },
-    "BRKAzioni-NVDA": {
-      "symbol": "NVDA",
-      "family": "BRKAzioni-NVDA",
-      "multiplier": 1.5,
-      "p_win": 0.6571,
-      "ev_norm": 2.1236,
-      "confidence": "Medium",
-      "streak": "2L",
-      "has_open": false,
-      "is_override": false
-    },
-    "BRKAzioni-W": {
-      "symbol": "W",
-      "family": "BRKAzioni-W",
-      "multiplier": 0.5,
-      "p_win": 0.3028,
-      "ev_norm": 0.6835,
-      "confidence": "Medium",
-      "streak": "1L",
-      "has_open": false,
-      "is_override": false
-    },
     "BRKPrezziAlt-1000BONKUSDT": {
       "symbol": "1000BONKUSDT",
       "family": "BRKPrezziAlt-1000BONKUSDT",
       "multiplier": 1.0,
-      "p_win": 0.441,
-      "ev_norm": 0.2324,
+      "p_win": 0.4358,
+      "ev_norm": 0.2146,
       "confidence": "High",
-      "streak": "2L",
-      "has_open": false,
+      "streak": "1L",
+      "has_open": true,
       "is_override": false
     },
     "BRKPrezziAlt-1000FLOKIUSDT": {
@@ -82,30 +49,19 @@
       "symbol": "GRTUSDT",
       "family": "BRKPrezziAlt-GRTUSDT",
       "multiplier": 1.0,
-      "p_win": 0.7923,
-      "ev_norm": 1.0315,
-      "confidence": "Low",
+      "p_win": 0.4216,
+      "ev_norm": 0.2514,
+      "confidence": "High",
       "streak": "1L",
       "has_open": false,
       "is_override": false
     },
-    "BRKPrezziBONKUSDT": {
-      "symbol": "1000BONKUSDT",
-      "family": "BRKPrezziBONKUSDT",
-      "multiplier": 0.5,
-      "p_win": 0.2612,
-      "ev_norm": -0.2739,
-      "confidence": "High",
-      "streak": "1W",
-      "has_open": false,
-      "is_override": false
-    },
     "BRKPrezziMGC": {
-      "symbol": "@MGCJ26",
+      "symbol": "@MGCM26",
       "family": "BRKPrezziMGC",
-      "multiplier": 1.0,
-      "p_win": 0.4906,
-      "ev_norm": 0.4666,
+      "multiplier": 1.5,
+      "p_win": 0.509,
+      "ev_norm": 1.0224,
       "confidence": "High",
       "streak": "1L",
       "has_open": false,
@@ -115,8 +71,8 @@
       "symbol": "@NGK26",
       "family": "BRKPrezziNG",
       "multiplier": 1.0,
-      "p_win": 0.4766,
-      "ev_norm": 2.218,
+      "p_win": 0.3891,
+      "ev_norm": 0.1243,
       "confidence": "Medium",
       "streak": "4L",
       "has_open": false,
@@ -137,11 +93,11 @@
       "symbol": "AVGO",
       "family": "BiasIntraweek",
       "multiplier": 1.0,
-      "p_win": 0.4398,
-      "ev_norm": 0.263,
+      "p_win": 0.4011,
+      "ev_norm": 0.1383,
       "confidence": "Medium",
-      "streak": "4L",
-      "has_open": false,
+      "streak": "5L",
+      "has_open": true,
       "is_override": false
     },
     "BiasIntraweekBA": {
@@ -182,7 +138,7 @@
       "family": "BiasIntraweek",
       "multiplier": 0.5,
       "p_win": 0.3349,
-      "ev_norm": -0.0325,
+      "ev_norm": -0.0234,
       "confidence": "Medium",
       "streak": "7L",
       "has_open": true,
@@ -232,7 +188,18 @@
       "has_open": true,
       "is_override": false
     },
-    "BreakOutAMD": {
+    "BreakOutDaily-AAPL": {
+      "symbol": "AAPL",
+      "family": "BreakOut",
+      "multiplier": 1.5,
+      "p_win": 0.5504,
+      "ev_norm": 1.2585,
+      "confidence": "Medium",
+      "streak": "2L",
+      "has_open": false,
+      "is_override": false
+    },
+    "BreakOutDaily-AMD": {
       "symbol": "AMD",
       "family": "BreakOut",
       "multiplier": 1.0,
@@ -243,7 +210,7 @@
       "has_open": true,
       "is_override": false
     },
-    "BreakOutBIDU": {
+    "BreakOutDaily-BIDU": {
       "symbol": "BIDU",
       "family": "BreakOut",
       "multiplier": 1.0,
@@ -254,7 +221,7 @@
       "has_open": false,
       "is_override": false
     },
-    "BreakOutCLS": {
+    "BreakOutDaily-CLS": {
       "symbol": "CLS",
       "family": "BreakOut",
       "multiplier": 1.5,
@@ -265,7 +232,7 @@
       "has_open": true,
       "is_override": false
     },
-    "BreakOutGOOG": {
+    "BreakOutDaily-GOOG": {
       "symbol": "GOOG",
       "family": "BreakOut",
       "multiplier": 1.5,
@@ -276,7 +243,18 @@
       "has_open": false,
       "is_override": false
     },
-    "BreakOutRCL": {
+    "BreakOutDaily-NVDA": {
+      "symbol": "NVDA",
+      "family": "BreakOut",
+      "multiplier": 1.5,
+      "p_win": 0.6571,
+      "ev_norm": 2.1207,
+      "confidence": "Medium",
+      "streak": "2L",
+      "has_open": false,
+      "is_override": false
+    },
+    "BreakOutDaily-RCL": {
       "symbol": "RCL",
       "family": "BreakOut",
       "multiplier": 1.0,
@@ -287,7 +265,7 @@
       "has_open": false,
       "is_override": false
     },
-    "BreakOutSHOP": {
+    "BreakOutDaily-SHOP": {
       "symbol": "SHOP",
       "family": "BreakOut",
       "multiplier": 1.0,
@@ -298,7 +276,18 @@
       "has_open": false,
       "is_override": false
     },
-    "BreakOutWYNN": {
+    "BreakOutDaily-W": {
+      "symbol": "W",
+      "family": "BreakOut",
+      "multiplier": 0.5,
+      "p_win": 0.3028,
+      "ev_norm": 0.6847,
+      "confidence": "Medium",
+      "streak": "1L",
+      "has_open": false,
+      "is_override": false
+    },
+    "BreakOutDaily-WYNN": {
       "symbol": "WYNN",
       "family": "BreakOut",
       "multiplier": 1.0,
@@ -309,23 +298,12 @@
       "has_open": false,
       "is_override": false
     },
-    "ISSCripto-DOGEUSDT": {
-      "symbol": "ETHFIUSDT",
-      "family": "ISSCripto-DOGEUSDT",
-      "multiplier": 1.5,
-      "p_win": 0.5666,
-      "ev_norm": 0.3196,
-      "confidence": "Medium",
-      "streak": "2L",
-      "has_open": false,
-      "is_override": false
-    },
     "ISSCriptoDOTUSDT": {
       "symbol": "DOTUSDT",
       "family": "ISSCriptoDOTUSDT",
-      "multiplier": 1.0,
-      "p_win": 0.3575,
-      "ev_norm": 0.0011,
+      "multiplier": 0.5,
+      "p_win": 0.3458,
+      "ev_norm": 0.006,
       "confidence": "Medium",
       "streak": "3L",
       "has_open": false,
@@ -339,15 +317,15 @@
       "ev_norm": 0.373,
       "confidence": "High",
       "streak": "1L",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "ISSCrypto-DASHUSDT": {
       "symbol": "DASHUSDT",
       "family": "ISSCrypto-DASHUSDT",
       "multiplier": 0.5,
-      "p_win": 0.2857,
-      "ev_norm": 0.126,
+      "p_win": 0.2992,
+      "ev_norm": 0.2127,
       "confidence": "High",
       "streak": "3L",
       "has_open": false,
@@ -357,8 +335,8 @@
       "symbol": "DOGEUSDT",
       "family": "ISSCrypto-DOGEUSDT",
       "multiplier": 1.0,
-      "p_win": 0.3757,
-      "ev_norm": 0.9131,
+      "p_win": 0.3866,
+      "ev_norm": 0.866,
       "confidence": "High",
       "streak": "2L",
       "has_open": false,
@@ -386,28 +364,6 @@
       "has_open": true,
       "is_override": false
     },
-    "MultichartsTSShortCoverMES": {
-      "symbol": "@MESM26",
-      "family": "MultichartsTSShortCoverMES",
-      "multiplier": 1.0,
-      "p_win": 0.4013,
-      "ev_norm": 0.0783,
-      "confidence": "High",
-      "streak": "1W",
-      "has_open": true,
-      "is_override": false
-    },
-    "ShortCoverM2K": {
-      "symbol": "@M2KM26",
-      "family": "ShortCover",
-      "multiplier": 1.5,
-      "p_win": 0.5928,
-      "ev_norm": 0.3377,
-      "confidence": "High",
-      "streak": "1L",
-      "has_open": true,
-      "is_override": false
-    },
     "ShortCoverMNQ": {
       "symbol": "@MNQM26",
       "family": "ShortCover",
@@ -419,24 +375,13 @@
       "has_open": false,
       "is_override": false
     },
-    "TrendFollMNQ": {
-      "symbol": "SHOP",
-      "family": "TrendFollMNQ",
-      "multiplier": 1.0,
-      "p_win": 0.493,
-      "ev_norm": 0.732,
-      "confidence": "Medium",
-      "streak": "3L",
-      "has_open": false,
-      "is_override": false
-    },
     "ZScoreAMD": {
       "symbol": "AMD",
       "family": "ZScore",
-      "multiplier": 1.0,
-      "p_win": 0.5242,
-      "ev_norm": 0.2236,
-      "confidence": "High",
+      "multiplier": 1.5,
+      "p_win": 0.5269,
+      "ev_norm": 0.3241,
+      "confidence": "Medium",
       "streak": "1L",
       "has_open": false,
       "is_override": false
@@ -455,11 +400,11 @@
     "ZScoreCRM": {
       "symbol": "CRM",
       "family": "ZScore",
-      "multiplier": 1.0,
-      "p_win": 0.5202,
-      "ev_norm": 0.089,
+      "multiplier": 1.5,
+      "p_win": 0.7574,
+      "ev_norm": 0.2587,
       "confidence": "Medium",
-      "streak": "2L",
+      "streak": "1L",
       "has_open": false,
       "is_override": false
     },
@@ -467,10 +412,10 @@
       "symbol": "JNJ",
       "family": "ZScore",
       "multiplier": 0.5,
-      "p_win": 0.345,
-      "ev_norm": 0.1578,
+      "p_win": 0.4442,
+      "ev_norm": -0.101,
       "confidence": "Medium",
-      "streak": "3W",
+      "streak": "2W",
       "has_open": true,
       "is_override": false
     },
@@ -478,10 +423,10 @@
       "symbol": "JPM",
       "family": "ZScore",
       "multiplier": 1.5,
-      "p_win": 0.6042,
-      "ev_norm": 0.8932,
+      "p_win": 0.6651,
+      "ev_norm": 0.1655,
       "confidence": "Medium",
-      "streak": "2L",
+      "streak": "1L",
       "has_open": false,
       "is_override": false
     },
@@ -489,21 +434,21 @@
       "symbol": "LLY",
       "family": "ZScore",
       "multiplier": 1.5,
-      "p_win": 0.646,
-      "ev_norm": 0.5538,
-      "confidence": "High",
-      "streak": "1W",
+      "p_win": 0.718,
+      "ev_norm": 0.5819,
+      "confidence": "Medium",
+      "streak": "2L",
       "has_open": false,
       "is_override": false
     },
     "ZScoreLULU": {
       "symbol": "LULU",
       "family": "ZScore",
-      "multiplier": 2.0,
-      "p_win": 0.7457,
-      "ev_norm": 0.3128,
-      "confidence": "High",
-      "streak": "2L",
+      "multiplier": 1.5,
+      "p_win": 0.704,
+      "ev_norm": 0.0866,
+      "confidence": "Medium",
+      "streak": "1L",
       "has_open": false,
       "is_override": false
     },
@@ -521,11 +466,11 @@
     "ZScoreNFLX": {
       "symbol": "NFLX",
       "family": "ZScore",
-      "multiplier": 1.0,
-      "p_win": 0.3816,
-      "ev_norm": 0.15,
+      "multiplier": 1.5,
+      "p_win": 0.6884,
+      "ev_norm": 0.3031,
       "confidence": "Medium",
-      "streak": "4L",
+      "streak": "2L",
       "has_open": false,
       "is_override": false
     },
@@ -533,10 +478,10 @@
       "symbol": "NVDA",
       "family": "ZScore",
       "multiplier": 1.5,
-      "p_win": 0.5755,
-      "ev_norm": 2.8044,
+      "p_win": 0.6412,
+      "ev_norm": 0.489,
       "confidence": "Medium",
-      "streak": "3L",
+      "streak": "2L",
       "has_open": false,
       "is_override": false
     }
