@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-07T08:21:10.018302+00:00",
+  "last_updated": "2026-04-08T03:50:18.654177+00:00",
   "systems": {
     "BRKPrezziAlt-1000BONKUSDT": {
       "symbol": "1000BONKUSDT",
@@ -28,7 +28,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-07T08:21:41.087395+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.891997+00:00"
     },
     "BRKPrezziAlt-1000FLOKIUSDT": {
       "symbol": "1000FLOKIUSDT",
@@ -57,7 +57,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-07T08:21:41.093107+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.897646+00:00"
     },
     "BRKPrezziAlt-1000SHIBUSDT": {
       "symbol": "1000SHIBUSDT",
@@ -86,7 +86,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.100852+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.905616+00:00"
     },
     "BRKPrezziAlt-FILUSDT": {
       "symbol": "FILUSDT",
@@ -115,7 +115,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.110656+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.914882+00:00"
     },
     "BRKPrezziAlt-GRTUSDT": {
       "symbol": "GRTUSDT",
@@ -144,7 +144,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.120195+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.925686+00:00"
     },
     "BRKPrezziMGC": {
       "symbol": "@MGCM26",
@@ -173,7 +173,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.122553+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.928139+00:00"
     },
     "BRKPrezziNG": {
       "symbol": "@NGK26",
@@ -202,7 +202,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.124604+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.930171+00:00"
     },
     "BiasIntraweekAAPL": {
       "symbol": "AAPL",
@@ -226,12 +226,12 @@
       "multiplier": 1.5,
       "confidence": "High",
       "sizing_reason": "P(W|L1) = 53.0% — nessun segnale significativo | EV boost (+0.87 ≥ +0.30)",
-      "has_open_position": true,
+      "has_open_position": false,
       "last_trade_date": "2026-03-18",
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.125954+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.931442+00:00"
     },
     "BiasIntraweekAVGO": {
       "symbol": "AVGO",
@@ -260,7 +260,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.127597+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.933009+00:00"
     },
     "BiasIntraweekBA": {
       "symbol": "BA",
@@ -289,7 +289,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.128776+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.934103+00:00"
     },
     "BiasIntraweekCAT": {
       "symbol": "CAT",
@@ -318,7 +318,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.129744+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.935102+00:00"
     },
     "BiasIntraweekGS": {
       "symbol": "GS",
@@ -347,7 +347,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.130590+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.935977+00:00"
     },
     "BiasIntraweekLLY": {
       "symbol": "LLY",
@@ -376,7 +376,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-07T08:21:41.133068+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.938487+00:00"
     },
     "BiasIntraweekMCD": {
       "symbol": "MCD",
@@ -405,7 +405,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.134105+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.939611+00:00"
     },
     "BiasIntraweekMRK": {
       "symbol": "MRK",
@@ -434,7 +434,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.135200+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.940751+00:00"
     },
     "BiasIntraweekORCL": {
       "symbol": "ORCL",
@@ -463,7 +463,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-07T08:21:41.137072+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.942721+00:00"
     },
     "BiasIntraweekWMT": {
       "symbol": "WMT",
@@ -492,7 +492,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.137749+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.943438+00:00"
     },
     "BreakOutDaily-AAPL": {
       "symbol": "AAPL",
@@ -521,7 +521,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.138505+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.944209+00:00"
     },
     "BreakOutDaily-AMD": {
       "symbol": "AMD",
@@ -550,7 +550,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.139317+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.945017+00:00"
     },
     "BreakOutDaily-BIDU": {
       "symbol": "BIDU",
@@ -579,7 +579,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.139980+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.945713+00:00"
     },
     "BreakOutDaily-CLS": {
       "symbol": "CLS",
@@ -608,7 +608,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.140723+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.946486+00:00"
     },
     "BreakOutDaily-GOOG": {
       "symbol": "GOOG",
@@ -637,7 +637,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.141426+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.947196+00:00"
     },
     "BreakOutDaily-NVDA": {
       "symbol": "NVDA",
@@ -666,7 +666,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.142157+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.947987+00:00"
     },
     "BreakOutDaily-RCL": {
       "symbol": "RCL",
@@ -695,7 +695,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.142901+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.948754+00:00"
     },
     "BreakOutDaily-SHOP": {
       "symbol": "SHOP",
@@ -724,7 +724,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.143667+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.949555+00:00"
     },
     "BreakOutDaily-W": {
       "symbol": "W",
@@ -753,7 +753,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-07T08:21:41.144328+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.950273+00:00"
     },
     "BreakOutDaily-WYNN": {
       "symbol": "WYNN",
@@ -782,7 +782,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.144970+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.950977+00:00"
     },
     "ISSCriptoDOTUSDT": {
       "symbol": "DOTUSDT",
@@ -809,9 +809,9 @@
       "has_open_position": true,
       "last_trade_date": "2026-03-18",
       "last_trade_result": "L",
-      "multiplier_changed": true,
-      "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.147223+00:00"
+      "multiplier_changed": false,
+      "prev_multiplier": 0.5,
+      "analyzed_at": "2026-04-08T03:50:47.953323+00:00"
     },
     "ISSCrypto-1000PEPEUSDT": {
       "symbol": "1000PEPEUSDT",
@@ -838,9 +838,9 @@
       "has_open_position": false,
       "last_trade_date": "2026-04-06",
       "last_trade_result": "L",
-      "multiplier_changed": true,
-      "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-07T08:21:41.148766+00:00"
+      "multiplier_changed": false,
+      "prev_multiplier": 1.0,
+      "analyzed_at": "2026-04-08T03:50:47.954945+00:00"
     },
     "ISSCrypto-DASHUSDT": {
       "symbol": "DASHUSDT",
@@ -869,7 +869,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-07T08:21:41.151391+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.957652+00:00"
     },
     "ISSCrypto-DOGEUSDT": {
       "symbol": "DOGEUSDT",
@@ -898,7 +898,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.153926+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.960390+00:00"
     },
     "ISSCryptoETHFIUSDT": {
       "symbol": "ETHFIUSDT",
@@ -927,7 +927,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.155088+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.961587+00:00"
     },
     "MYMSushi": {
       "symbol": "@MYMM26",
@@ -956,7 +956,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.156426+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.962933+00:00"
     },
     "MultichartsTSShortCoverMES": {
       "symbol": "@MESM26",
@@ -985,7 +985,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.158647+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.965310+00:00"
     },
     "ShortCoverMNQ": {
       "symbol": "@MNQM26",
@@ -1012,9 +1012,9 @@
       "has_open_position": false,
       "last_trade_date": "2026-04-05",
       "last_trade_result": "L",
-      "multiplier_changed": true,
-      "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.162116+00:00"
+      "multiplier_changed": false,
+      "prev_multiplier": 0.5,
+      "analyzed_at": "2026-04-08T03:50:47.968947+00:00"
     },
     "ZScoreAMD": {
       "symbol": "AMD",
@@ -1043,7 +1043,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.163153+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.970063+00:00"
     },
     "ZScoreAMZN": {
       "symbol": "AMZN",
@@ -1072,7 +1072,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.164190+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.971145+00:00"
     },
     "ZScoreCRM": {
       "symbol": "CRM",
@@ -1101,7 +1101,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.165055+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.972053+00:00"
     },
     "ZScoreJNJ": {
       "symbol": "JNJ",
@@ -1130,7 +1130,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-07T08:21:41.165912+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.972951+00:00"
     },
     "ZScoreJPM": {
       "symbol": "JPM",
@@ -1159,7 +1159,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.166847+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.973916+00:00"
     },
     "ZScoreLLY": {
       "symbol": "LLY",
@@ -1188,7 +1188,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.167925+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.975037+00:00"
     },
     "ZScoreLULU": {
       "symbol": "LULU",
@@ -1217,7 +1217,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.168787+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.975936+00:00"
     },
     "ZScoreMU": {
       "symbol": "MU",
@@ -1246,7 +1246,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-07T08:21:41.169851+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.977032+00:00"
     },
     "ZScoreNFLX": {
       "symbol": "NFLX",
@@ -1275,7 +1275,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.170938+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.978171+00:00"
     },
     "ZScoreNVDA": {
       "symbol": "NVDA",
@@ -1304,7 +1304,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-07T08:21:41.172138+00:00"
+      "analyzed_at": "2026-04-08T03:50:47.979407+00:00"
     }
   }
 }
