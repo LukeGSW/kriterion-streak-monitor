@@ -467,10 +467,10 @@
       "symbol": "MU",
       "family": "ZScore",
       "multiplier": 2.0,
-      "p_win": 0.9866,
-      "ev_norm": 0.3916,
+      "p_win": 0.956,
+      "ev_norm": 0.7215,
       "confidence": "High",
-      "streak": "2109W",
+      "streak": "39W",
       "has_open": true,
       "is_override": false
     },
