@@ -5,11 +5,11 @@
       "symbol": "1000BONKUSDT",
       "family": "BRKPrezziAlt-1000BONKUSDT",
       "multiplier": 1.0,
-      "p_win": 0.4477,
-      "ev_norm": 0.2463,
+      "p_win": 0.4411,
+      "ev_norm": 0.2274,
       "confidence": "High",
-      "streak": "1L",
-      "has_open": true,
+      "streak": "2L",
+      "has_open": false,
       "is_override": false
     },
     "BRKPrezziAlt-1000FLOKIUSDT": {
@@ -26,11 +26,11 @@
     "BRKPrezziAlt-1000SHIBUSDT": {
       "symbol": "1000SHIBUSDT",
       "family": "BRKPrezziAlt-1000SHIBUSDT",
-      "multiplier": 0.5,
-      "p_win": 0.2344,
-      "ev_norm": -0.1733,
-      "confidence": "High",
-      "streak": "14L",
+      "multiplier": 1.0,
+      "p_win": 0.3805,
+      "ev_norm": 0.3254,
+      "confidence": "Medium",
+      "streak": "7L",
       "has_open": true,
       "is_override": false
     },
