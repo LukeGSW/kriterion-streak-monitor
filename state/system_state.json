@@ -1,150 +1,150 @@
 {
-  "last_updated": "2026-04-17T04:11:00.068075+00:00",
+  "last_updated": "2026-04-17T06:39:11.216509+00:00",
   "systems": {
     "BRKPrezziAlt-1000BONKUSDT": {
       "symbol": "1000BONKUSDT",
       "family": "BRKPrezziAlt-1000BONKUSDT",
-      "n_trades": 310,
-      "win_rate": 0.3839,
+      "n_trades": 313,
+      "win_rate": 0.3802,
       "avg_win_usd": 187.48,
-      "avg_loss_usd": -105.19,
+      "avg_loss_usd": -103.59,
       "profit_factor": 1.11,
       "streak_type": "L",
-      "streak_len": 2,
-      "n_obs_for_streak": 25,
-      "n_wins_after_streak": 11,
-      "p_win_given_streak": 0.4411,
-      "ci_lower_80": 0.3206,
-      "ci_upper_80": 0.5637,
-      "ev_per_trade": 23.92,
-      "ev_normalized": 0.2274,
-      "half_kelly": 0.0638,
+      "streak_len": 5,
+      "n_obs_for_streak": 10,
+      "n_wins_after_streak": 4,
+      "p_win_given_streak": 0.4129,
+      "ci_lower_80": 0.2344,
+      "ci_upper_80": 0.5986,
+      "ev_per_trade": 16.58,
+      "ev_normalized": 0.1601,
+      "half_kelly": 0.0442,
       "is_override": false,
       "multiplier": 1.0,
-      "confidence": "High",
-      "sizing_reason": "P(W|L2) = 44.1% — nessun segnale significativo",
+      "confidence": "Medium",
+      "sizing_reason": "P(W|L4(↓5)) = 41.3% — nessun segnale significativo",
       "has_open_position": false,
-      "last_trade_date": "2026-04-14",
+      "last_trade_date": "2026-04-16",
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.670882+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.156271+00:00"
     },
     "BRKPrezziAlt-1000FLOKIUSDT": {
       "symbol": "1000FLOKIUSDT",
       "family": "BRKPrezziAlt-1000FLOKIUSDT",
-      "n_trades": 371,
-      "win_rate": 0.3747,
+      "n_trades": 394,
+      "win_rate": 0.3528,
       "avg_win_usd": 92.0,
-      "avg_loss_usd": -52.06,
-      "profit_factor": 1.059,
-      "streak_type": "W",
-      "streak_len": 2,
-      "n_obs_for_streak": 9,
-      "n_wins_after_streak": 2,
-      "p_win_given_streak": 0.3141,
-      "ci_lower_80": 0.1478,
-      "ci_upper_80": 0.4966,
-      "ev_per_trade": -6.82,
-      "ev_normalized": -0.131,
+      "avg_loss_usd": -48.98,
+      "profit_factor": 1.024,
+      "streak_type": "L",
+      "streak_len": 23,
+      "n_obs_for_streak": 21,
+      "n_wins_after_streak": 1,
+      "p_win_given_streak": 0.1038,
+      "ci_lower_80": 0.0343,
+      "ci_upper_80": 0.1889,
+      "ev_per_trade": -34.35,
+      "ev_normalized": -0.7012,
       "half_kelly": 0.0,
       "is_override": false,
       "multiplier": 0.5,
-      "confidence": "Medium",
-      "sizing_reason": "P(W|W2) = 31.4% ≤ 35% — prob. loss elevata",
+      "confidence": "High",
+      "sizing_reason": "P(W|L5(↓23)) = 10.4% ≤ 35% — prob. loss elevata",
       "has_open_position": true,
-      "last_trade_date": "2026-04-10",
-      "last_trade_result": "W",
+      "last_trade_date": "2026-04-17",
+      "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.677323+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.162058+00:00"
     },
     "BRKPrezziAlt-1000SHIBUSDT": {
       "symbol": "1000SHIBUSDT",
       "family": "BRKPrezziAlt-1000SHIBUSDT",
-      "n_trades": 552,
-      "win_rate": 0.3641,
+      "n_trades": 554,
+      "win_rate": 0.3628,
       "avg_win_usd": 198.86,
-      "avg_loss_usd": -80.07,
+      "avg_loss_usd": -79.64,
       "profit_factor": 1.422,
       "streak_type": "L",
-      "streak_len": 7,
-      "n_obs_for_streak": 10,
+      "streak_len": 9,
+      "n_obs_for_streak": 11,
       "n_wins_after_streak": 3,
-      "p_win_given_streak": 0.3805,
-      "ci_lower_80": 0.2055,
-      "ci_upper_80": 0.5655,
-      "ev_per_trade": 26.06,
-      "ev_normalized": 0.3254,
-      "half_kelly": 0.0655,
+      "p_win_given_streak": 0.3239,
+      "ci_lower_80": 0.1686,
+      "ci_upper_80": 0.4918,
+      "ev_per_trade": 10.56,
+      "ev_normalized": 0.1326,
+      "half_kelly": 0.0266,
       "is_override": false,
-      "multiplier": 1.0,
+      "multiplier": 0.5,
       "confidence": "Medium",
-      "sizing_reason": "P(W|L5(↓7)) = 38.0% — nessun segnale significativo",
+      "sizing_reason": "P(W|L5(↓9)) = 32.4% ≤ 35% — prob. loss elevata",
       "has_open_position": true,
-      "last_trade_date": "2026-04-12",
+      "last_trade_date": "2026-04-16",
       "last_trade_result": "L",
-      "multiplier_changed": false,
+      "multiplier_changed": true,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.685079+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.169749+00:00"
     },
     "BRKPrezziAlt-FILUSDT": {
       "symbol": "FILUSDT",
       "family": "BRKPrezziAlt-FILUSDT",
-      "n_trades": 647,
-      "win_rate": 0.391,
-      "avg_win_usd": 163.9,
+      "n_trades": 648,
+      "win_rate": 0.392,
+      "avg_win_usd": 164.14,
       "avg_loss_usd": -83.36,
-      "profit_factor": 1.263,
-      "streak_type": "L",
-      "streak_len": 3,
-      "n_obs_for_streak": 16,
-      "n_wins_after_streak": 7,
-      "p_win_given_streak": 0.4443,
-      "ci_lower_80": 0.2984,
-      "ci_upper_80": 0.593,
-      "ev_per_trade": 26.5,
-      "ev_normalized": 0.3179,
-      "half_kelly": 0.0808,
+      "profit_factor": 1.269,
+      "streak_type": "W",
+      "streak_len": 1,
+      "n_obs_for_streak": 28,
+      "n_wins_after_streak": 11,
+      "p_win_given_streak": 0.4008,
+      "ci_lower_80": 0.2886,
+      "ci_upper_80": 0.5159,
+      "ev_per_trade": 15.83,
+      "ev_normalized": 0.1899,
+      "half_kelly": 0.0482,
       "is_override": false,
       "multiplier": 1.0,
       "confidence": "High",
-      "sizing_reason": "P(W|L3) = 44.4% — nessun segnale significativo",
+      "sizing_reason": "P(W|W1) = 40.1% — nessun segnale significativo",
       "has_open_position": false,
-      "last_trade_date": "2026-04-08",
-      "last_trade_result": "L",
+      "last_trade_date": "2026-04-16",
+      "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.694929+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.180270+00:00"
     },
     "BRKPrezziAlt-GRTUSDT": {
       "symbol": "GRTUSDT",
       "family": "BRKPrezziAlt-GRTUSDT",
-      "n_trades": 702,
-      "win_rate": 0.3533,
-      "avg_win_usd": 85.0,
-      "avg_loss_usd": -43.15,
-      "profit_factor": 1.076,
-      "streak_type": "L",
-      "streak_len": 2,
-      "n_obs_for_streak": 26,
-      "n_wins_after_streak": 8,
-      "p_win_given_streak": 0.3421,
-      "ci_lower_80": 0.23,
-      "ci_upper_80": 0.4594,
-      "ev_per_trade": 0.69,
-      "ev_normalized": 0.016,
-      "half_kelly": 0.0041,
+      "n_trades": 785,
+      "win_rate": 0.3516,
+      "avg_win_usd": 80.26,
+      "avg_loss_usd": -39.47,
+      "profit_factor": 1.103,
+      "streak_type": "W",
+      "streak_len": 28,
+      "n_obs_for_streak": 20,
+      "n_wins_after_streak": 20,
+      "p_win_given_streak": 0.9542,
+      "ci_lower_80": 0.8953,
+      "ci_upper_80": 0.995,
+      "ev_per_trade": 74.77,
+      "ev_normalized": 1.8946,
+      "half_kelly": 0.4658,
       "is_override": false,
-      "multiplier": 0.5,
+      "multiplier": 2.0,
       "confidence": "High",
-      "sizing_reason": "P(W|L2) = 34.2% ≤ 35% — prob. loss elevata",
+      "sizing_reason": "P(W|W5(↓28)) = 95.4% ≥ 75% — alta prob. win",
       "has_open_position": false,
-      "last_trade_date": "2026-04-08",
-      "last_trade_result": "L",
-      "multiplier_changed": false,
+      "last_trade_date": "2026-04-16",
+      "last_trade_result": "W",
+      "multiplier_changed": true,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.704847+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.191124+00:00"
     },
     "BRKPrezziMGC": {
       "symbol": "@MGCM26",
@@ -173,7 +173,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.707332+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.193502+00:00"
     },
     "BRKPrezziNG": {
       "symbol": "@NGK26",
@@ -202,7 +202,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.709367+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.195467+00:00"
     },
     "BiasIntraweekAAPL": {
       "symbol": "AAPL",
@@ -231,7 +231,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.710722+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.196793+00:00"
     },
     "BiasIntraweekAVGO": {
       "symbol": "AVGO",
@@ -260,7 +260,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.712396+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.198372+00:00"
     },
     "BiasIntraweekBA": {
       "symbol": "BA",
@@ -289,7 +289,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.713610+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.199586+00:00"
     },
     "BiasIntraweekCAT": {
       "symbol": "CAT",
@@ -318,7 +318,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.714720+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.200661+00:00"
     },
     "BiasIntraweekGS": {
       "symbol": "GS",
@@ -347,7 +347,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.715719+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.201627+00:00"
     },
     "BiasIntraweekLLY": {
       "symbol": "LLY",
@@ -376,7 +376,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.718657+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.204203+00:00"
     },
     "BiasIntraweekMCD": {
       "symbol": "MCD",
@@ -405,7 +405,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.720362+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.205857+00:00"
     },
     "BiasIntraweekMRK": {
       "symbol": "MRK",
@@ -434,7 +434,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.721662+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.207091+00:00"
     },
     "BiasIntraweekORCL": {
       "symbol": "ORCL",
@@ -463,7 +463,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.723730+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.209067+00:00"
     },
     "BiasIntraweekWMT": {
       "symbol": "WMT",
@@ -492,7 +492,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.724563+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.209849+00:00"
     },
     "BreakOutDaily-AAPL": {
       "symbol": "AAPL",
@@ -521,7 +521,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.725476+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.210719+00:00"
     },
     "BreakOutDaily-AMD": {
       "symbol": "AMD",
@@ -550,7 +550,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.726416+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.211632+00:00"
     },
     "BreakOutDaily-BIDU": {
       "symbol": "BIDU",
@@ -579,7 +579,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.727284+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.212432+00:00"
     },
     "BreakOutDaily-CLS": {
       "symbol": "CLS",
@@ -608,7 +608,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.728178+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.213306+00:00"
     },
     "BreakOutDaily-GOOG": {
       "symbol": "GOOG",
@@ -637,7 +637,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.729031+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.214136+00:00"
     },
     "BreakOutDaily-NVDA": {
       "symbol": "NVDA",
@@ -666,7 +666,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.731348+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.216097+00:00"
     },
     "BreakOutDaily-RCL": {
       "symbol": "RCL",
@@ -695,7 +695,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.733460+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.217801+00:00"
     },
     "BreakOutDaily-SHOP": {
       "symbol": "SHOP",
@@ -724,7 +724,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.734628+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.218598+00:00"
     },
     "BreakOutDaily-W": {
       "symbol": "W",
@@ -753,7 +753,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.735627+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.219242+00:00"
     },
     "BreakOutDaily-WYNN": {
       "symbol": "WYNN",
@@ -782,7 +782,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.736608+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.219916+00:00"
     },
     "ISSCriptoDOTUSDT": {
       "symbol": "DOTUSDT",
@@ -811,16 +811,16 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.740499+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.222188+00:00"
     },
     "ISSCrypto-1000PEPEUSDT": {
       "symbol": "1000PEPEUSDT",
       "family": "ISSCrypto-1000PEPEUSDT",
       "n_trades": 90,
       "win_rate": 0.3,
-      "avg_win_usd": 707.17,
-      "avg_loss_usd": -207.35,
-      "profit_factor": 1.462,
+      "avg_win_usd": 1065.76,
+      "avg_loss_usd": -306.03,
+      "profit_factor": 1.493,
       "streak_type": "L",
       "streak_len": 4,
       "n_obs_for_streak": 10,
@@ -828,19 +828,19 @@
       "p_win_given_streak": 0.5359,
       "ci_lower_80": 0.35,
       "ci_upper_80": 0.7188,
-      "ev_per_trade": 282.74,
-      "ev_normalized": 1.3636,
-      "half_kelly": 0.1999,
+      "ev_per_trade": 429.11,
+      "ev_normalized": 1.4022,
+      "half_kelly": 0.2013,
       "is_override": false,
       "multiplier": 1.5,
       "confidence": "Medium",
-      "sizing_reason": "P(W|L4) = 53.6% — nessun segnale significativo | EV boost (+1.36 ≥ +0.30)",
+      "sizing_reason": "P(W|L4) = 53.6% — nessun segnale significativo | EV boost (+1.40 ≥ +0.30)",
       "has_open_position": true,
       "last_trade_date": "2026-04-15",
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.743940+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.224856+00:00"
     },
     "ISSCrypto-DASHUSDT": {
       "symbol": "DASHUSDT",
@@ -869,16 +869,16 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.747349+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.227585+00:00"
     },
     "ISSCrypto-DOGEUSDT": {
       "symbol": "DOGEUSDT",
       "family": "ISSCrypto-DOGEUSDT",
       "n_trades": 169,
-      "win_rate": 0.355,
-      "avg_win_usd": 696.31,
-      "avg_loss_usd": -180.21,
-      "profit_factor": 2.127,
+      "win_rate": 0.3254,
+      "avg_win_usd": 379.46,
+      "avg_loss_usd": -92.0,
+      "profit_factor": 1.99,
       "streak_type": "L",
       "streak_len": 5,
       "n_obs_for_streak": 6,
@@ -886,9 +886,9 @@
       "p_win_given_streak": 0.3346,
       "ci_lower_80": 0.139,
       "ci_upper_80": 0.5509,
-      "ev_per_trade": 113.08,
-      "ev_normalized": 0.6275,
-      "half_kelly": 0.0812,
+      "ev_per_trade": 65.75,
+      "ev_normalized": 0.7146,
+      "half_kelly": 0.0866,
       "is_override": false,
       "multiplier": 0.5,
       "confidence": "Medium",
@@ -898,16 +898,16 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.751630+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.231131+00:00"
     },
     "ISSCryptoETHFIUSDT": {
       "symbol": "ETHFIUSDT",
       "family": "ISSCryptoETHFIUSDT",
       "n_trades": 60,
       "win_rate": 0.4333,
-      "avg_win_usd": 293.86,
-      "avg_loss_usd": -225.02,
-      "profit_factor": 0.999,
+      "avg_win_usd": 141.93,
+      "avg_loss_usd": -117.51,
+      "profit_factor": 0.924,
       "streak_type": "W",
       "streak_len": 1,
       "n_obs_for_streak": 17,
@@ -915,48 +915,48 @@
       "p_win_given_streak": 0.371,
       "ci_lower_80": 0.2326,
       "ci_upper_80": 0.5158,
-      "ev_per_trade": -32.51,
-      "ev_normalized": -0.1445,
+      "ev_per_trade": -21.26,
+      "ev_normalized": -0.1809,
       "half_kelly": 0.0,
       "is_override": false,
       "multiplier": 0.5,
       "confidence": "High",
-      "sizing_reason": "P(W|W1) = 37.1% — nessun segnale significativo | EV penalità (-0.14 ≤ -0.10)",
+      "sizing_reason": "P(W|W1) = 37.1% — nessun segnale significativo | EV penalità (-0.18 ≤ -0.10)",
       "has_open_position": true,
       "last_trade_date": "2026-04-15",
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.753684+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.233019+00:00"
     },
     "MYMSushi": {
       "symbol": "@MYMM26",
       "family": "MYMSushi",
-      "n_trades": 68,
-      "win_rate": 0.6618,
-      "avg_win_usd": 1063.92,
+      "n_trades": 171,
+      "win_rate": 0.8655,
+      "avg_win_usd": 3332.41,
       "avg_loss_usd": -721.52,
-      "profit_factor": 2.885,
+      "profit_factor": 29.72,
       "streak_type": "W",
-      "streak_len": 1,
-      "n_obs_for_streak": 28,
-      "n_wins_after_streak": 18,
-      "p_win_given_streak": 0.6117,
-      "ci_lower_80": 0.4977,
-      "ci_upper_80": 0.7224,
-      "ev_per_trade": 370.64,
-      "ev_normalized": 0.5137,
-      "half_kelly": 0.1742,
+      "streak_len": 104,
+      "n_obs_for_streak": 55,
+      "n_wins_after_streak": 55,
+      "p_win_given_streak": 0.9784,
+      "ci_lower_80": 0.9529,
+      "ci_upper_80": 0.9967,
+      "ev_per_trade": 3244.76,
+      "ev_normalized": 4.4971,
+      "half_kelly": 0.4868,
       "is_override": false,
-      "multiplier": 1.5,
+      "multiplier": 2.0,
       "confidence": "High",
-      "sizing_reason": "P(W|W1) = 61.2% — nessun segnale significativo | EV boost (+0.51 ≥ +0.30)",
+      "sizing_reason": "P(W|W5(↓104)) = 97.8% ≥ 75% — alta prob. win",
       "has_open_position": true,
-      "last_trade_date": "2026-03-25",
+      "last_trade_date": "2026-04-17",
       "last_trade_result": "W",
-      "multiplier_changed": false,
+      "multiplier_changed": true,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.755072+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.235671+00:00"
     },
     "MultichartsTSShortCoverM2K": {
       "symbol": "@M2KM26",
@@ -985,7 +985,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.757234+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.237707+00:00"
     },
     "MultichartsTSShortCoverMES": {
       "symbol": "@MESM26",
@@ -1014,7 +1014,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.759556+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.239941+00:00"
     },
     "ShortCoverMNQ": {
       "symbol": "@MNQM26",
@@ -1043,7 +1043,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.763226+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.243456+00:00"
     },
     "ZScoreAMD": {
       "symbol": "AMD",
@@ -1072,7 +1072,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.764310+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.244493+00:00"
     },
     "ZScoreAMZN": {
       "symbol": "AMZN",
@@ -1101,7 +1101,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-04-17T04:11:56.765392+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.245558+00:00"
     },
     "ZScoreCRM": {
       "symbol": "CRM",
@@ -1130,7 +1130,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.766284+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.246410+00:00"
     },
     "ZScoreJNJ": {
       "symbol": "JNJ",
@@ -1159,7 +1159,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.767145+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.247245+00:00"
     },
     "ZScoreJPM": {
       "symbol": "JPM",
@@ -1188,7 +1188,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.768098+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.248183+00:00"
     },
     "ZScoreLLY": {
       "symbol": "LLY",
@@ -1217,7 +1217,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.769201+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.249273+00:00"
     },
     "ZScoreLULU": {
       "symbol": "LULU",
@@ -1246,7 +1246,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.770091+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.250165+00:00"
     },
     "ZScoreMU": {
       "symbol": "MU",
@@ -1275,7 +1275,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-04-17T04:11:56.771163+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.251235+00:00"
     },
     "ZScoreNFLX": {
       "symbol": "NFLX",
@@ -1304,7 +1304,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.772293+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.252345+00:00"
     },
     "ZScoreNVDA": {
       "symbol": "NVDA",
@@ -1333,7 +1333,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.5,
-      "analyzed_at": "2026-04-17T04:11:56.773505+00:00"
+      "analyzed_at": "2026-04-17T06:40:30.253575+00:00"
     }
   }
 }
