@@ -15,23 +15,23 @@
     "BRKPrezziAlt-1000FLOKIUSDT": {
       "symbol": "1000FLOKIUSDT",
       "family": "BRKPrezziAlt-1000FLOKIUSDT",
-      "multiplier": 0.5,
-      "p_win": 0.1038,
-      "ev_norm": -0.7012,
+      "multiplier": 1.0,
+      "p_win": 0.3987,
+      "ev_norm": 0.1054,
       "confidence": "High",
-      "streak": "23L",
-      "has_open": true,
+      "streak": "2L",
+      "has_open": false,
       "is_override": false
     },
     "BRKPrezziAlt-1000SHIBUSDT": {
       "symbol": "1000SHIBUSDT",
       "family": "BRKPrezziAlt-1000SHIBUSDT",
       "multiplier": 1.0,
-      "p_win": 0.4118,
-      "ev_norm": 0.4223,
-      "confidence": "Medium",
-      "streak": "3W",
-      "has_open": true,
+      "p_win": 0.3577,
+      "ev_norm": 0.2439,
+      "confidence": "High",
+      "streak": "1W",
+      "has_open": false,
       "is_override": false
     },
     "BRKPrezziAlt-FILUSDT": {
@@ -48,12 +48,12 @@
     "BRKPrezziAlt-GRTUSDT": {
       "symbol": "GRTUSDT",
       "family": "BRKPrezziAlt-GRTUSDT",
-      "multiplier": 1.5,
-      "p_win": 0.8482,
-      "ev_norm": 1.4726,
-      "confidence": "Medium",
-      "streak": "10W",
-      "has_open": true,
+      "multiplier": 1.0,
+      "p_win": 0.4166,
+      "ev_norm": 0.2337,
+      "confidence": "High",
+      "streak": "1L",
+      "has_open": false,
       "is_override": false
     },
     "BRKPrezziMGC": {
@@ -218,7 +218,7 @@
       "ev_norm": 0.3118,
       "confidence": "Medium",
       "streak": "1L",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "BreakOutDaily-CLS": {
@@ -306,7 +306,7 @@
       "ev_norm": 0.1102,
       "confidence": "High",
       "streak": "1W",
-      "has_open": true,
+      "has_open": false,
       "is_override": false
     },
     "ISSCrypto-1000PEPEUSDT": {
@@ -324,11 +324,11 @@
       "symbol": "DASHUSDT",
       "family": "ISSCrypto-DASHUSDT",
       "multiplier": 0.5,
-      "p_win": 0.2538,
-      "ev_norm": -0.0128,
+      "p_win": 0.3417,
+      "ev_norm": 0.3475,
       "confidence": "Medium",
-      "streak": "9L",
-      "has_open": true,
+      "streak": "5L",
+      "has_open": false,
       "is_override": false
     },
     "ISSCrypto-DOGEUSDT": {
@@ -356,32 +356,10 @@
     "MYMSushi": {
       "symbol": "@MYMM26",
       "family": "MYMSushi",
-      "multiplier": 2.0,
-      "p_win": 0.9866,
-      "ev_norm": 5.8561,
-      "confidence": "High",
-      "streak": "4681W",
-      "has_open": true,
-      "is_override": false
-    },
-    "MultichartsTSShortCoverM2K": {
-      "symbol": "@M2KM26",
-      "family": "MultichartsTSShortCoverM2K",
-      "multiplier": 0.5,
-      "p_win": 0.3914,
-      "ev_norm": -0.1229,
-      "confidence": "High",
-      "streak": "1W",
-      "has_open": false,
-      "is_override": false
-    },
-    "MultichartsTSShortCoverMES": {
-      "symbol": "@MESM26",
-      "family": "MultichartsTSShortCoverMES",
       "multiplier": 1.5,
-      "p_win": 0.5374,
-      "ev_norm": 0.3903,
-      "confidence": "Medium",
+      "p_win": 0.6013,
+      "ev_norm": 0.5469,
+      "confidence": "High",
       "streak": "2W",
       "has_open": false,
       "is_override": false
@@ -390,10 +368,10 @@
       "symbol": "@MNQM26",
       "family": "ShortCover",
       "multiplier": 0.5,
-      "p_win": 0.2399,
-      "ev_norm": -0.4431,
+      "p_win": 0.3408,
+      "ev_norm": 0.0364,
       "confidence": "High",
-      "streak": "6L",
+      "streak": "1L",
       "has_open": false,
       "is_override": false
     },
