@@ -15,11 +15,11 @@
     "BRKPrezziAlt-1000FLOKIUSDT": {
       "symbol": "1000FLOKIUSDT",
       "family": "BRKPrezziAlt-1000FLOKIUSDT",
-      "multiplier": 1.0,
-      "p_win": 0.3987,
-      "ev_norm": 0.1054,
-      "confidence": "High",
-      "streak": "2L",
+      "multiplier": 1.5,
+      "p_win": 0.866,
+      "ev_norm": 1.2945,
+      "confidence": "Medium",
+      "streak": "11W",
       "has_open": false,
       "is_override": false
     },
@@ -141,7 +141,7 @@
       "ev_norm": 0.4034,
       "confidence": "High",
       "streak": "1L",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "BiasIntraweekMCD": {
@@ -273,7 +273,7 @@
       "ev_norm": 0.732,
       "confidence": "Medium",
       "streak": "3L",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "BreakOutDaily-W": {
@@ -314,7 +314,7 @@
       "family": "ISSCrypto-1000PEPEUSDT",
       "multiplier": 1.0,
       "p_win": 0.493,
-      "ev_norm": 1.2295,
+      "ev_norm": 1.286,
       "confidence": "Medium",
       "streak": "5L",
       "has_open": false,
@@ -339,7 +339,7 @@
       "ev_norm": 0.5318,
       "confidence": "Medium",
       "streak": "6L",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "ISSCryptoETHFIUSDT": {
