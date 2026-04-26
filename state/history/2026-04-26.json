@@ -133,17 +133,6 @@
       "has_open": true,
       "is_override": false
     },
-    "BiasIntraweekLLY": {
-      "symbol": "LLY",
-      "family": "BiasIntraweek",
-      "multiplier": 1.0,
-      "p_win": 0.4828,
-      "ev_norm": 0.4034,
-      "confidence": "High",
-      "streak": "1L",
-      "has_open": false,
-      "is_override": false
-    },
     "BiasIntraweekMCD": {
       "symbol": "MCD",
       "family": "BiasIntraweek",
@@ -383,6 +372,17 @@
       "ev_norm": 0.3903,
       "confidence": "Medium",
       "streak": "2W",
+      "has_open": false,
+      "is_override": false
+    },
+    "MultichartsTSShortCoverMNQ": {
+      "symbol": "@MNQZ25",
+      "family": "MultichartsTSShortCoverMNQ",
+      "multiplier": 1.0,
+      "p_win": 0.4099,
+      "ev_norm": 0.3761,
+      "confidence": "High",
+      "streak": "2L",
       "has_open": false,
       "is_override": false
     },
