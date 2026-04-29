@@ -1,0 +1,280 @@
+{
+  "date": "2026-04-29",
+  "systems": {
+    "BRKPrezziAlt-1000BONKUSDT": {
+      "symbol": "1000BONKUSDT",
+      "family": "BRKPrezziAlt-1000BONKUSDT",
+      "multiplier": 1.0,
+      "p_win": 0.4517,
+      "ev_norm": 0.261,
+      "confidence": "Medium",
+      "streak": "4L",
+      "has_open": false,
+      "is_override": false
+    },
+    "BRKPrezziAlt-1000FLOKIUSDT": {
+      "symbol": "1000FLOKIUSDT",
+      "family": "BRKPrezziAlt-1000FLOKIUSDT",
+      "multiplier": 1.0,
+      "p_win": 0.4143,
+      "ev_norm": 0.142,
+      "confidence": "High",
+      "streak": "1L",
+      "has_open": false,
+      "is_override": false
+    },
+    "BRKPrezziAlt-1000SHIBUSDT": {
+      "symbol": "1000SHIBUSDT",
+      "family": "BRKPrezziAlt-1000SHIBUSDT",
+      "multiplier": 0.5,
+      "p_win": 0.326,
+      "ev_norm": 0.1352,
+      "confidence": "High",
+      "streak": "1L",
+      "has_open": false,
+      "is_override": false
+    },
+    "BRKPrezziAlt-FILUSDT": {
+      "symbol": "FILUSDT",
+      "family": "BRKPrezziAlt-FILUSDT",
+      "multiplier": 1.0,
+      "p_win": 0.4018,
+      "ev_norm": 0.1939,
+      "confidence": "High",
+      "streak": "1L",
+      "has_open": false,
+      "is_override": false
+    },
+    "BRKPrezziAlt-GRTUSDT": {
+      "symbol": "GRTUSDT",
+      "family": "BRKPrezziAlt-GRTUSDT",
+      "multiplier": 1.0,
+      "p_win": 0.3539,
+      "ev_norm": 0.0487,
+      "confidence": "High",
+      "streak": "2L",
+      "has_open": false,
+      "is_override": false
+    },
+    "BRKPrezziMGC": {
+      "symbol": "@MGCM26",
+      "family": "BRKPrezziMGC",
+      "multiplier": 1.5,
+      "p_win": 0.5227,
+      "ev_norm": 1.0951,
+      "confidence": "High",
+      "streak": "1L",
+      "has_open": false,
+      "is_override": false
+    },
+    "BRKPrezziNG": {
+      "symbol": "@NGM26",
+      "family": "BRKPrezziNG",
+      "multiplier": 1.5,
+      "p_win": 0.5342,
+      "ev_norm": 0.381,
+      "confidence": "Medium",
+      "streak": "2W",
+      "has_open": false,
+      "is_override": false
+    },
+    "ISSCriptoDOTUSDT": {
+      "symbol": "DOTUSDT",
+      "family": "ISSCriptoDOTUSDT",
+      "multiplier": 1.0,
+      "p_win": 0.3854,
+      "ev_norm": 0.1102,
+      "confidence": "High",
+      "streak": "1W",
+      "has_open": false,
+      "is_override": false
+    },
+    "ISSCrypto-1000PEPEUSDT": {
+      "symbol": "1000PEPEUSDT",
+      "family": "ISSCrypto-1000PEPEUSDT",
+      "multiplier": 1.0,
+      "p_win": 0.493,
+      "ev_norm": 1.286,
+      "confidence": "Medium",
+      "streak": "5L",
+      "has_open": false,
+      "is_override": false
+    },
+    "ISSCrypto-DASHUSDT": {
+      "symbol": "DASHUSDT",
+      "family": "ISSCrypto-DASHUSDT",
+      "multiplier": 0.5,
+      "p_win": 0.3417,
+      "ev_norm": 0.3475,
+      "confidence": "Medium",
+      "streak": "5L",
+      "has_open": false,
+      "is_override": false
+    },
+    "ISSCrypto-DOGEUSDT": {
+      "symbol": "DOGEUSDT",
+      "family": "ISSCrypto-DOGEUSDT",
+      "multiplier": 0.5,
+      "p_win": 0.2684,
+      "ev_norm": 0.3825,
+      "confidence": "Medium",
+      "streak": "7L",
+      "has_open": true,
+      "is_override": false
+    },
+    "ISSCryptoETHFIUSDT": {
+      "symbol": "ETHFIUSDT",
+      "family": "ISSCryptoETHFIUSDT",
+      "multiplier": 0.5,
+      "p_win": 0.3483,
+      "ev_norm": -0.2457,
+      "confidence": "Medium",
+      "streak": "2W",
+      "has_open": false,
+      "is_override": false
+    },
+    "MultichartsTSShortCoverM2K": {
+      "symbol": "@M2KM26",
+      "family": "MultichartsTSShortCoverM2K",
+      "multiplier": 0.5,
+      "p_win": 0.3914,
+      "ev_norm": -0.1229,
+      "confidence": "High",
+      "streak": "1W",
+      "has_open": false,
+      "is_override": false
+    },
+    "MultichartsTSShortCoverMES": {
+      "symbol": "@MESM26",
+      "family": "MultichartsTSShortCoverMES",
+      "multiplier": 1.5,
+      "p_win": 0.5374,
+      "ev_norm": 0.3903,
+      "confidence": "Medium",
+      "streak": "2W",
+      "has_open": false,
+      "is_override": false
+    },
+    "ShortCoverMNQ": {
+      "symbol": "@MNQM26",
+      "family": "ShortCover",
+      "multiplier": 0.5,
+      "p_win": 0.3408,
+      "ev_norm": 0.0364,
+      "confidence": "High",
+      "streak": "1L",
+      "has_open": false,
+      "is_override": false
+    },
+    "ZScoreAMD": {
+      "symbol": "AMD",
+      "family": "ZScore",
+      "multiplier": 1.5,
+      "p_win": 0.5269,
+      "ev_norm": 0.3381,
+      "confidence": "Medium",
+      "streak": "1L",
+      "has_open": false,
+      "is_override": false
+    },
+    "ZScoreAMZN": {
+      "symbol": "AMZN",
+      "family": "ZScore",
+      "multiplier": 1.0,
+      "p_win": 0.5815,
+      "ev_norm": 0.1644,
+      "confidence": "High",
+      "streak": "1W",
+      "has_open": false,
+      "is_override": false
+    },
+    "ZScoreCRM": {
+      "symbol": "CRM",
+      "family": "ZScore",
+      "multiplier": 1.5,
+      "p_win": 0.7574,
+      "ev_norm": 0.2623,
+      "confidence": "Medium",
+      "streak": "1L",
+      "has_open": false,
+      "is_override": false
+    },
+    "ZScoreJNJ": {
+      "symbol": "JNJ",
+      "family": "ZScore",
+      "multiplier": 0.5,
+      "p_win": 0.4216,
+      "ev_norm": -0.1373,
+      "confidence": "High",
+      "streak": "1L",
+      "has_open": true,
+      "is_override": false
+    },
+    "ZScoreJPM": {
+      "symbol": "JPM",
+      "family": "ZScore",
+      "multiplier": 1.5,
+      "p_win": 0.7066,
+      "ev_norm": 0.2413,
+      "confidence": "Medium",
+      "streak": "1L",
+      "has_open": true,
+      "is_override": false
+    },
+    "ZScoreLLY": {
+      "symbol": "LLY",
+      "family": "ZScore",
+      "multiplier": 1.5,
+      "p_win": 0.718,
+      "ev_norm": 0.6489,
+      "confidence": "Medium",
+      "streak": "2L",
+      "has_open": false,
+      "is_override": false
+    },
+    "ZScoreLULU": {
+      "symbol": "LULU",
+      "family": "ZScore",
+      "multiplier": 1.5,
+      "p_win": 0.704,
+      "ev_norm": 0.0783,
+      "confidence": "Medium",
+      "streak": "1L",
+      "has_open": false,
+      "is_override": false
+    },
+    "ZScoreMU": {
+      "symbol": "MU",
+      "family": "ZScore",
+      "multiplier": 0.5,
+      "p_win": 0.3355,
+      "ev_norm": -0.2502,
+      "confidence": "Medium",
+      "streak": "2W",
+      "has_open": false,
+      "is_override": false
+    },
+    "ZScoreNFLX": {
+      "symbol": "NFLX",
+      "family": "ZScore",
+      "multiplier": 1.5,
+      "p_win": 0.6894,
+      "ev_norm": 0.3232,
+      "confidence": "Medium",
+      "streak": "2L",
+      "has_open": false,
+      "is_override": false
+    },
+    "ZScoreNVDA": {
+      "symbol": "NVDA",
+      "family": "ZScore",
+      "multiplier": 1.5,
+      "p_win": 0.6412,
+      "ev_norm": 0.5045,
+      "confidence": "Medium",
+      "streak": "2L",
+      "has_open": false,
+      "is_override": false
+    }
+  }
+}
