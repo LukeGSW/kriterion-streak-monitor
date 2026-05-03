@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-02T17:30:06.559196+00:00",
+  "last_updated": "2026-05-03T04:39:33.853741+00:00",
   "systems": {
     "BRKPrezziAlt-1000PEPEUSDT": {
       "symbol": "1000PEPEUSDT",
@@ -27,8 +27,8 @@
       "last_trade_date": "2026-04-29",
       "last_trade_result": "L",
       "multiplier_changed": false,
-      "prev_multiplier": 1.0,
-      "analyzed_at": "2026-05-02T17:30:14.816964+00:00"
+      "prev_multiplier": 1.5,
+      "analyzed_at": "2026-05-03T04:39:39.962756+00:00"
     },
     "BRKPrezziAlt-1000SHIBUSDT": {
       "symbol": "1000SHIBUSDT",
@@ -57,7 +57,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-05-02T17:30:14.825516+00:00"
+      "analyzed_at": "2026-05-03T04:39:39.971171+00:00"
     },
     "BRKPrezziAlt-FILUSDT": {
       "symbol": "FILUSDT",
@@ -86,7 +86,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-05-02T17:30:14.836060+00:00"
+      "analyzed_at": "2026-05-03T04:39:39.980663+00:00"
     },
     "BRKPrezziAlt-LINKUSDT": {
       "symbol": "LINKUSDT",
@@ -115,7 +115,7 @@
       "last_trade_result": "W",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-05-02T17:30:14.850740+00:00"
+      "analyzed_at": "2026-05-03T04:39:39.996111+00:00"
     },
     "BRKPrezziAlt-PENDLEUSDT": {
       "symbol": "PENDLEUSDT",
@@ -143,8 +143,8 @@
       "last_trade_date": "2026-05-01",
       "last_trade_result": "W",
       "multiplier_changed": false,
-      "prev_multiplier": 1.0,
-      "analyzed_at": "2026-05-02T17:30:14.857570+00:00"
+      "prev_multiplier": 1.5,
+      "analyzed_at": "2026-05-03T04:39:40.002023+00:00"
     },
     "ISSCrypto-1000PEPEUSDT": {
       "symbol": "1000PEPEUSDT",
@@ -173,7 +173,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-05-02T17:30:14.859413+00:00"
+      "analyzed_at": "2026-05-03T04:39:40.003971+00:00"
     },
     "ISSCrypto-DASHUSDT": {
       "symbol": "DASHUSDT",
@@ -202,7 +202,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 0.5,
-      "analyzed_at": "2026-05-02T17:30:14.862418+00:00"
+      "analyzed_at": "2026-05-03T04:39:40.006872+00:00"
     },
     "ISSCrypto-FILUSDT": {
       "symbol": "FILUSDT",
@@ -231,7 +231,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-05-02T17:30:14.864619+00:00"
+      "analyzed_at": "2026-05-03T04:39:40.009271+00:00"
     },
     "ISSCrypto-NEARUSDT": {
       "symbol": "NEARUSDT",
@@ -260,7 +260,7 @@
       "last_trade_result": "L",
       "multiplier_changed": false,
       "prev_multiplier": 1.0,
-      "analyzed_at": "2026-05-02T17:30:14.867741+00:00"
+      "analyzed_at": "2026-05-03T04:39:40.012110+00:00"
     },
     "ISSCrypto-NEOUSDT": {
       "symbol": "NEOUSDT",
@@ -288,8 +288,8 @@
       "last_trade_date": "2026-04-20",
       "last_trade_result": "L",
       "multiplier_changed": false,
-      "prev_multiplier": 1.0,
-      "analyzed_at": "2026-05-02T17:30:14.871526+00:00"
+      "prev_multiplier": 0.5,
+      "analyzed_at": "2026-05-03T04:39:40.015221+00:00"
     }
   }
 }
