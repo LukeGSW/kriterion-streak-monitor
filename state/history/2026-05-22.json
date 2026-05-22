@@ -31,7 +31,7 @@
       "ev_norm": 0.2175,
       "confidence": "High",
       "streak": "1L",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "BRKPrezziAlt-LINKUSDT": {
