@@ -56,17 +56,6 @@
       "has_open": false,
       "is_override": false
     },
-    "BRKPrezziMGC": {
-      "symbol": "@MGCQ26",
-      "family": "BRKPrezziMGC",
-      "multiplier": 1.0,
-      "p_win": 0.4634,
-      "ev_norm": 0.8552,
-      "confidence": "High",
-      "streak": "2L",
-      "has_open": false,
-      "is_override": false
-    },
     "BRKPrezziNG": {
       "symbol": "@NGN26",
       "family": "BRKPrezziNG",
@@ -75,17 +64,6 @@
       "ev_norm": 0.1882,
       "confidence": "Medium",
       "streak": "3W",
-      "has_open": false,
-      "is_override": false
-    },
-    "BiasIntraweekAAPL": {
-      "symbol": "AAPL",
-      "family": "BiasIntraweek",
-      "multiplier": 1.5,
-      "p_win": 0.5509,
-      "ev_norm": 0.957,
-      "confidence": "Medium",
-      "streak": "2L",
       "has_open": false,
       "is_override": false
     },
@@ -105,7 +83,7 @@
       "family": "BiasIntraweek",
       "multiplier": 0.5,
       "p_win": 0.3057,
-      "ev_norm": 0.3205,
+      "ev_norm": 0.323,
       "confidence": "Medium",
       "streak": "1W",
       "has_open": false,
@@ -122,37 +100,26 @@
       "has_open": true,
       "is_override": false
     },
-    "BiasIntraweekGS": {
-      "symbol": "GS",
+    "BiasIntraweekCOST": {
+      "symbol": "COST",
       "family": "BiasIntraweek",
-      "multiplier": 1.0,
-      "p_win": 0.4906,
-      "ev_norm": 1.1586,
-      "confidence": "Medium",
-      "streak": "1L",
-      "has_open": true,
-      "is_override": false
-    },
-    "BiasIntraweekLLY": {
-      "symbol": "LLY",
-      "family": "BiasIntraweek",
-      "multiplier": 1.0,
-      "p_win": 0.4122,
-      "ev_norm": 0.2188,
+      "multiplier": 0.5,
+      "p_win": 0.2519,
+      "ev_norm": -0.1955,
       "confidence": "Medium",
       "streak": "2W",
       "has_open": true,
       "is_override": false
     },
-    "BiasIntraweekMCD": {
-      "symbol": "MCD",
+    "BiasIntraweekMETA": {
+      "symbol": "META",
       "family": "BiasIntraweek",
       "multiplier": 1.0,
-      "p_win": 0.3957,
-      "ev_norm": 0.1193,
-      "confidence": "Medium",
-      "streak": "3L",
-      "has_open": true,
+      "p_win": 0.4104,
+      "ev_norm": 0.1809,
+      "confidence": "High",
+      "streak": "2L",
+      "has_open": false,
       "is_override": false
     },
     "BiasIntraweekMRK": {
@@ -163,6 +130,17 @@
       "ev_norm": 0.2181,
       "confidence": "High",
       "streak": "1L",
+      "has_open": true,
+      "is_override": false
+    },
+    "BiasIntraweekNVDA": {
+      "symbol": "NVDA",
+      "family": "BiasIntraweek",
+      "multiplier": 1.0,
+      "p_win": 0.4913,
+      "ev_norm": 0.7699,
+      "confidence": "High",
+      "streak": "1W",
       "has_open": true,
       "is_override": false
     },
@@ -177,14 +155,25 @@
       "has_open": false,
       "is_override": false
     },
-    "BiasIntraweekWMT": {
-      "symbol": "WMT",
+    "BiasIntraweekVZ": {
+      "symbol": "VZ",
       "family": "BiasIntraweek",
       "multiplier": 1.0,
-      "p_win": 0.8171,
-      "ev_norm": 1.738,
-      "confidence": "Low",
-      "streak": "1L",
+      "p_win": 0.4601,
+      "ev_norm": 0.4731,
+      "confidence": "High",
+      "streak": "2L",
+      "has_open": false,
+      "is_override": false
+    },
+    "BiasIntraweekXOM": {
+      "symbol": "XOM",
+      "family": "BiasIntraweek",
+      "multiplier": 1.0,
+      "p_win": 0.4512,
+      "ev_norm": 0.5744,
+      "confidence": "Medium",
+      "streak": "2L",
       "has_open": true,
       "is_override": false
     },
@@ -397,17 +386,6 @@
       "has_open": false,
       "is_override": false
     },
-    "TrendFollMNQ": {
-      "symbol": "VZ",
-      "family": "TrendFollMNQ",
-      "multiplier": 1.0,
-      "p_win": 0.4601,
-      "ev_norm": 0.4731,
-      "confidence": "High",
-      "streak": "2L",
-      "has_open": false,
-      "is_override": false
-    },
     "ZScoreAMD": {
       "symbol": "AMD",
       "family": "ZScore",
@@ -490,7 +468,7 @@
       "family": "ZScore",
       "multiplier": 1.5,
       "p_win": 0.6548,
-      "ev_norm": 0.4974,
+      "ev_norm": 0.4917,
       "confidence": "Medium",
       "streak": "4W",
       "has_open": false,
