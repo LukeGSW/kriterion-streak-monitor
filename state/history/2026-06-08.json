@@ -397,6 +397,17 @@
       "has_open": false,
       "is_override": false
     },
+    "TrendFollMNQ": {
+      "symbol": "VZ",
+      "family": "TrendFollMNQ",
+      "multiplier": 1.0,
+      "p_win": 0.4601,
+      "ev_norm": 0.4731,
+      "confidence": "High",
+      "streak": "2L",
+      "has_open": false,
+      "is_override": false
+    },
     "ZScoreAMD": {
       "symbol": "AMD",
       "family": "ZScore",
