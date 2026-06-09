@@ -86,7 +86,7 @@
       "ev_norm": 0.323,
       "confidence": "Medium",
       "streak": "1W",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "BiasIntraweekCAT": {
@@ -105,7 +105,7 @@
       "family": "BiasIntraweek",
       "multiplier": 0.5,
       "p_win": 0.2519,
-      "ev_norm": -0.1955,
+      "ev_norm": -0.1963,
       "confidence": "Medium",
       "streak": "2W",
       "has_open": true,
@@ -119,7 +119,7 @@
       "ev_norm": 0.1809,
       "confidence": "High",
       "streak": "2L",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "BiasIntraweekMRK": {
@@ -152,7 +152,7 @@
       "ev_norm": 0.8701,
       "confidence": "High",
       "streak": "1W",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "BiasIntraweekVZ": {
@@ -202,12 +202,12 @@
     "BreakOutDaily-BIDU": {
       "symbol": "BIDU",
       "family": "BreakOut",
-      "multiplier": 1.0,
-      "p_win": 0.3659,
-      "ev_norm": 0.3118,
+      "multiplier": 0.5,
+      "p_win": 0.3447,
+      "ev_norm": 0.2582,
       "confidence": "Medium",
-      "streak": "1L",
-      "has_open": true,
+      "streak": "2L",
+      "has_open": false,
       "is_override": false
     },
     "BreakOutDaily-CLS": {
@@ -235,12 +235,12 @@
     "BreakOutDaily-NVDA": {
       "symbol": "NVDA",
       "family": "BreakOut",
-      "multiplier": 1.5,
-      "p_win": 0.6571,
-      "ev_norm": 2.1236,
+      "multiplier": 1.0,
+      "p_win": 0.4456,
+      "ev_norm": 1.0519,
       "confidence": "Medium",
-      "streak": "2L",
-      "has_open": true,
+      "streak": "1W",
+      "has_open": false,
       "is_override": false
     },
     "BreakOutDaily-RCL": {
@@ -306,7 +306,7 @@
       "ev_norm": 0.248,
       "confidence": "High",
       "streak": "1W",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "ISSCrypto-FILUSDT": {
@@ -405,7 +405,7 @@
       "ev_norm": 0.4428,
       "confidence": "Medium",
       "streak": "1L",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "ZScoreCRM": {
@@ -449,7 +449,7 @@
       "ev_norm": 0.6489,
       "confidence": "Medium",
       "streak": "2L",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "ZScoreLULU": {
@@ -471,7 +471,7 @@
       "ev_norm": 0.4917,
       "confidence": "Medium",
       "streak": "4W",
-      "has_open": false,
+      "has_open": true,
       "is_override": false
     },
     "ZScoreNFLX": {
