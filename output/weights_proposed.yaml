@@ -1,5 +1,5 @@
 # Pesi consigliati per famiglia — Portfolio Allocator
-# Generato: 2026-06-12T05:09:35.166483+00:00
+# Generato: 2026-06-12T05:35:00.133698+00:00
 # NB: pesi di rischio (inverse-volatility), non giudizi di qualità.
 weights:
   MultichartsTSShortCoverM2K: 2.00
