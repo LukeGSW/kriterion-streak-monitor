@@ -1,1 +1,14 @@
-# Placeholder — i pesi reali verranno generati dalla prima run con le equities pulite a size uniforme.
+# Pesi consigliati per famiglia — Portfolio Allocator
+# Generato: 2026-06-12T05:09:35.166483+00:00
+# NB: pesi di rischio (inverse-volatility), non giudizi di qualità.
+weights:
+  MultichartsTSShortCoverM2K: 2.00
+  MultichartsTSShortCoverMES: 2.00
+  ZScore: 1.50
+  MYMSushi: 1.00
+  ShortCoverMNQ: 0.75
+  BRKPrezziAlt: 0.75
+  BRKPrezziNG: 0.50
+  ISSCrypto: 0.50
+  BiasIntraweek: 0.50
+  BreakOutDaily: 0.50
