@@ -1,0 +1,62 @@
+# ============================================================
+# settings.yaml — Configurazione Portfolio Allocator
+# ============================================================
+# Unico file da modificare. Credenziali → GitHub Secrets.
+# ============================================================
+
+# ── Google Drive (stessa cartella dello Streak Monitor)
+drive:
+  folder_id: "1BUOmf50Ty2-OL-nfarHWfVb0G7vD3X3E"
+
+# ── Email
+email:
+  subject: "📊 Portfolio Allocator — Report Trimestrale"
+
+# ── Mappatura famiglie: prefisso nome file → famiglia.
+# I sistemi che non matchano nessun prefisso diventano famiglia a sé.
+families:
+  prefixes:
+    - BiasIntraweek
+    - BreakOutDaily
+    - ZScore
+    - ISSCrypto
+    - BRKPrezziAlt
+
+# ── Normalizzazione size
+# Usare SOLO se l'equity nel CSV è esportata a una size diversa da
+# quella realmente tradata. Il PnL del CSV viene MOLTIPLICATO per
+# il fattore. Esempio: equity esportata full-size ma tradi il micro
+# a 1/10 → fattore 0.1. Chiave = nome sistema (nome file senza .csv).
+size_normalization: {}
+  # BRKPrezziNG: 0.1
+
+# ── Parametri allocazione
+allocation:
+  # Mesi di lookback per la stima della volatilità (inverse-vol)
+  lookback_months: 24
+  # Cap sui pesi per famiglia
+  weight_min: 0.5
+  weight_max: 2.0
+  # Arrotondamento operativo dei pesi consigliati (step)
+  weight_step: 0.25
+  # Mesi minimi di storia perché una famiglia entri nel calcolo pesi
+  min_history_months: 12
+
+# ── Validazione walk-forward
+walkforward:
+  # Mesi di warmup prima della prima stima out-of-sample
+  warmup_months: 24
+  # Campioni bootstrap per la differenza di Sharpe
+  bootstrap_samples: 5000
+
+# ── Sanity check sui dati (quarantena automatica)
+sanity:
+  # Win rate oltre questa soglia = dati sospetti → quarantena
+  max_win_rate: 0.90
+  # Quota di righe duplicate oltre cui il file è sospetto
+  max_dup_ratio: 0.30
+  # Trade chiusi minimi per includere un sistema
+  min_trades: 10
+  # Giorni senza trade chiusi oltre cui segnalare il sistema come stale
+  # (solo warning nel report, non esclude dal calcolo)
+  stale_days: 90
