@@ -87,6 +87,33 @@ finisce in quarantena, sistemare i dati prima di toccare i pesi.
 
 ---
 
+## Riconciliazione con MultiCharts (da fare PRIMA di usare i pesi)
+
+I pesi valgono solo se le equity su Drive sono identiche a quelle che vedi
+su MultiCharts. Procedura una-tantum (e dopo ogni modifica agli export):
+
+```bash
+python src/verify.py            # legge da Drive (o --local /path/csv)
+```
+
+Per ogni sistema stampa **Net Profit**, **# Trades**, primo/ultimo trade e
+la **% di entrate a minuto :00** (un sistema su dati minuto con 100% di
+entrate a ore esatte è esportato dal chart sbagliato). Confronta i numeri
+con lo Strategy Performance Report di MultiCharts:
+
+1. Coincidono → `python src/verify.py --approve` e committa
+   `output/fingerprints.json`: è la baseline di immutabilità.
+2. Non coincidono → ri-esporta il sistema dal workspace corretto e ripeti.
+
+Da quel momento **ogni run trimestrale verifica che lo storico non sia
+mutato**: i trade passati non cambiano mai, quindi se il PnL di un anno
+chiuso differisce dalla baseline il sistema va in quarantena automatica
+(file rigenerato da timeframe/workspace/size diversi) e non entra nei pesi.
+Per ri-approvare un sistema dopo una correzione voluta:
+`python src/verify.py --approve NomeSistema`.
+
+---
+
 ## Test locale (opzionale)
 
 ```bash
