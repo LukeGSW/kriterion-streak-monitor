@@ -29,6 +29,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from parser import parse_system_csv
 from sanity import run_sanity_checks
+from fingerprint import check_fingerprints, save_fingerprints
 from portfolio import analyze
 from report_builder import build_report, build_weights_yaml
 
@@ -99,6 +100,26 @@ def main() -> int:
     sanity = run_sanity_checks(parsed, settings.get('sanity', {}))
     if not sanity.ok:
         logger.error("Nessun sistema supera i sanity check: pipeline interrotta.")
+        return 1
+
+    # ── 3b. Immutabilità storico: i trade passati non cambiano mai.
+    # Sistemi con storico mutato → quarantena (file rigenerato da
+    # configurazione diversa: timeframe/workspace/size errati).
+    fp_path = OUTPUT_DIR / 'fingerprints.json'
+    mutations, new_systems, updated_fp = check_fingerprints(sanity.ok, fp_path)
+    if mutations:
+        mutated_names = {n for n, _ in mutations}
+        sanity.quarantined.extend(mutations)
+        sanity.ok = [ps for ps in sanity.ok if ps.system_name not in mutated_names]
+        for n, r in mutations:
+            logger.warning(f"QUARANTENA {n}: {r}")
+    for n in new_systems:
+        sanity.warnings.append(
+            (n, "primo censimento: baseline immutabilità creata in questa run"))
+    OUTPUT_DIR.mkdir(exist_ok=True)
+    save_fingerprints(fp_path, updated_fp)
+    if not sanity.ok:
+        logger.error("Tutti i sistemi in quarantena: pipeline interrotta.")
         return 1
 
     # ── 4. Analisi
