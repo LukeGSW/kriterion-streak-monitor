@@ -1,0 +1,82 @@
+# ============================================================
+# quarterly.yml — GitHub Action: analisi trimestrale
+# ============================================================
+# Gira il 1° giorno di gennaio, aprile, luglio e ottobre alle
+# 06:00 UTC. Avviabile anche manualmente da GitHub → Actions →
+# Run workflow (per la prima esecuzione o test).
+#
+# Secrets richiesti (identici allo Streak Monitor):
+#   GOOGLE_SERVICE_ACCOUNT_JSON
+#   GMAIL_ADDRESS
+#   GMAIL_APP_PASSWORD
+# ============================================================
+
+name: Portfolio Allocator — Quarterly Analysis
+
+on:
+  schedule:
+    - cron: '0 6 1 1,4,7,10 *'   # 1° gen/apr/lug/ott, 06:00 UTC
+
+  workflow_dispatch:
+    inputs:
+      debug_mode:
+        description: 'Abilita logging dettagliato'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  analyze-and-report:
+    name: Analisi Allocazione e Invio Report
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: write      # per committare output/
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      - name: Installa dipendenze
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Esegui analisi allocazione
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GMAIL_ADDRESS:               ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD:          ${{ secrets.GMAIL_APP_PASSWORD }}
+          DEBUG_MODE: ${{ inputs.debug_mode || 'false' }}
+        run: |
+          echo "🕐 Avvio analisi: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          python src/main.py
+          echo "✅ Analisi completata: $(date -u '+%Y-%m-%d %H:%M UTC')"
+
+      - name: Commit output aggiornato
+        run: |
+          git config user.name  "portfolio-allocator[bot]"
+          git config user.email "portfolio-allocator[bot]@users.noreply.github.com"
+          git add output/
+          if git diff --staged --quiet; then
+            echo "ℹ️  Nessuna modifica — commit saltato"
+          else
+            git commit -m "📊 Report trimestrale $(date -u '+%Y-%m-%d')"
+            git push
+          fi
+
+      - name: Verifica esito
+        if: failure()
+        run: |
+          echo "::error::❌ La run trimestrale ha fallito. Controlla i log."
